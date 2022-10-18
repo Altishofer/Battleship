@@ -1,4 +1,6 @@
 package ui;
 
-public class OceanGrid {
+public class OceanGrid
+{
+
 }

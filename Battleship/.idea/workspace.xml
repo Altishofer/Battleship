@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2abc3083-a59d-423e-ae4f-bddb6f5284d8" name="Changes" comment="" />
+    <list default="true" id="2abc3083-a59d-423e-ae4f-bddb6f5284d8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/block/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/block/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/block/BlockType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/block/BlockType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fleet/Battleship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fleet/Battleship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fleet/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fleet/Ship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/OceanGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/OceanGrid.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +70,7 @@
       <workItem from="1666090951835" duration="727000" />
       <workItem from="1666092483546" duration="3552000" />
       <workItem from="1666105334767" duration="2867000" />
+      <workItem from="1666119672873" duration="5057000" />
     </task>
     <servers />
   </component>
