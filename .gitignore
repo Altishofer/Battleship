@@ -1,0 +1,7 @@
+# Ignore everything
+*
+
+# But not this directory/file
+!.gitignore
+!Battleship/src/
+!Battleship.class.jet
