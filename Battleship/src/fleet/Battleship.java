@@ -1,4 +1,4 @@
 package fleet;
 
-public class Battleship {
+public class Battleship extends Ship {
 }

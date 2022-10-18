@@ -3,8 +3,10 @@ import player.User;
 
 import java.util.Random;
 
-public class Main {
-    public static void main(String[] args) {
+public class Main
+{
+    public static void main(String[] args)
+    {
         User user = new User();
         Computer computer = new Computer();
 
@@ -13,10 +15,10 @@ public class Main {
         boolean game_over = false;
         user.setFleet();
         computer.setFleet();
-        while(!game_over){
+/*        while(!game_over){
             if(user_turn){
 
             }
-        }
+            */
     }
 }
