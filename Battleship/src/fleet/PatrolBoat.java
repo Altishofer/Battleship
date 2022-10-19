@@ -1,4 +1,5 @@
 package fleet;
 
-public class PatrolBoat extends Ship{
+public class PatrolBoat extends Ship
+{
 }
