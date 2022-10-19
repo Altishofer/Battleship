@@ -5,5 +5,5 @@
 !.gitignore
 !Battleship/src/
 !Battleship.class.jet
-!*.iml
-!modules.xml
+#!*.iml
+#!modules.xml
