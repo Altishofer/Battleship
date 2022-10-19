@@ -15,10 +15,12 @@ public class Main
         boolean game_over = false;
         user.setFleet();
         computer.setFleet();
+        System.out.println("hello world");
 /*        while(!game_over){
             if(user_turn){
 
             }
             */
+
     }
 }
