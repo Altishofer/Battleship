@@ -6,8 +6,9 @@ import block.BlockType;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Grid
+public class Grid
 {
+
     private BlockType[][] aGrid = new BlockType[10][10];
 
     public BlockType getBlockTypeByCoordinate(String pCoordinate)
