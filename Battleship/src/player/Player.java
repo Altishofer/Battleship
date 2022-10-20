@@ -1,5 +1,6 @@
 package player;
 
 public interface Player {
-    void setFleet();
+    public void nextMove();
+    public void setFleet();
 }
