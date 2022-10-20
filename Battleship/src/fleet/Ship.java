@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Ship
 {
-
     private final ArrayList<String> aCoordinates;
     private final String aType;
     private int aSize;

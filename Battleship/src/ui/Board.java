@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 public class Board {
 
-    ArrayList<String> output;
-    Grid grid = new Grid();
+    Grid playerGrid;
+    Grid npcGrid;
+
+
     private final String titleOceanGrid = "==== OCEAN GRID ====";
     private final String titelTargetGrid = "==== TARGET GRID ====";
     private final String titleLetters = "A B C D E F G H I J";
