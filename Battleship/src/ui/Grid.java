@@ -18,7 +18,7 @@ public class Grid {
         return copyGrid;
     }
 
-    public String[][] getOceanGridStrings(){
+    public String[][] getTargetGridStrings(){
         String[][] copyGrid = new String[10][10];
 
         for (int i = 0; i < aGrid.length; i++)

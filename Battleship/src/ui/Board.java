@@ -6,13 +6,13 @@ public class Board {
 
     ArrayList<String> output;
     Grid grid = new Grid();
+    private final String titleOceanGrid = "==== OCEAN GRID ====";
+    private final String titelTargetGrid = "==== TARGET GRID ====";
+    private final String titleLetters = "A B C D E F G H I J";
+    private final String delimiter = "+-+-+-+-+-+-+-+-+-+-+";
 
-    public void printOceanGrid(){
+    public void printaGrid(){
         String[][] oceanBoard = grid.getOceanGridStrings();
-        String titleOceanGrid = "==== OCEAN GRID ====";
-        String titleLetters = "A B C D E F G H I J";
-        String delimiter = "+-+-+-+-+-+-+-+-+-+-+";
-
         System.out.println(titleOceanGrid);
         System.out.println(titleLetters);
         System.out.println(delimiter);
