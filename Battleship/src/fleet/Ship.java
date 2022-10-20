@@ -8,24 +8,20 @@ public class Ship
     private final String aType;
     private int aSize;
 
-    public String toString() {
-        return aType;
-    }
-
-    public Ship(String pType, ArrayList<String> pCoordinates)
+    public Ship(ArrayList<String> pCoordinates)
     {
-        this.aType = pType;
+        String typeTmp = new String();
         this.aSize = pCoordinates.size();
+        if (aSize == 2){typeTmp = "P";}
+        if (aSize == 3){typeTmp = "S";}
+        if (aSize == 4){typeTmp = "B";}
+        if (aSize == 6){typeTmp = "C";}
+        aType = typeTmp;
         this.aCoordinates = pCoordinates;
     }
-    public void setHit()
-    {
-        aSize -= 1;
-    }
-    public boolean hasSunk()
-    {
-        return aSize <= 0;
-    }
+    public String toString() {return aType;}
+    public void setHit() {aSize -= 1;}
+    public boolean hasSunk(){return aSize <= 0;}
 
     public ArrayList getCoordinates()
     {

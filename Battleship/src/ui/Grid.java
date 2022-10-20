@@ -2,6 +2,8 @@ package ui;
 
 import block.Block;
 
+import java.util.ArrayList;
+
 public class Grid {
     private Block[][] aGrid = new Block[10][10];
 
@@ -31,10 +33,13 @@ public class Grid {
         return copyGrid;
     }
 
-    public void setShip(String pCoordinate, fleet.Ship pShip)
+    public void setShip(ArrayList<String> pCoordinate, fleet.Ship pShip)
     {
-        Block block = getBlock(pCoordinate);
-        block.setShip(pShip);
+        for (String coor : pCoordinate)
+        {
+            Block block = getBlock(coor);
+            block.setShip(pShip);
+        }
     }
 
     public void setHit(String pCoordinate)
@@ -49,6 +54,12 @@ public class Grid {
         return aGrid[coor[0]][coor[1]];
     }
 
+    public boolean isFree(String pCoordinate)
+    {
+        int[] coor = convertCoordinates(pCoordinate);
+        return !aGrid[coor[0]][coor[1]].hasShip();
+    }
+
 
     private static boolean isNumeric(char ch) {
         try {
@@ -59,28 +70,28 @@ public class Grid {
         }
     }
 
+    public static boolean coordinatesAreValid(String coordinate)
+    {
+        if (coordinate.length() != 2 && isNumeric(coordinate.charAt(0)))
+        {
+            return false;
+        }
+        int[] convCoor = convertCoordinates(coordinate);
+        if (convCoor[0] > 9 || convCoor[1] > 9)
+        {
+            return false;
+        }
+        return true;
+    }
+
     public static int[] convertCoordinates(String coordinate)
     {
         int column;
         int row;
         coordinate = coordinate.toUpperCase();
 
-        if (coordinate.length() > 2)
-        {
-            throw new IllegalArgumentException("Coordinates must be of length two");
-        }
-        if (!isNumeric(coordinate.charAt(0)))
-        {
-            throw new IllegalArgumentException("First char of Coordinates needs to be numeric");
-        }
-
         column = coordinate.charAt(0) - 'A';
         row = coordinate.charAt(1) - '1';
-
-        if (column >= 10 || row >= 10)
-        {
-            throw new IllegalArgumentException("Coordinates are out of range");
-        }
 
         return new int[] {column, row};
     }
