@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Battleship extends Ship
 {
-     public Battleship(char pType, ArrayList<String> pCoordinates)
+     public Battleship(String pType, ArrayList<String> pCoordinates)
      {
           super(pType, pCoordinates);
      }

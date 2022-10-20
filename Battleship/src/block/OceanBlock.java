@@ -13,11 +13,31 @@ public class OceanBlock
         {
             return false;
         }
-        aShip.
+        aShip.setHit();
         return true;
     }
 
-    public boolean getHit()
+    public String toString() {
+        if (aShip == null)
+        {
+            return "|";
+        }
+        if (aShip.hasSunk())
+        {
+            return aShip.toString();
+        }
+        if (aHit)
+        {
+            return "X";
+        }
+    }
+
+    public boolean hasShip()
+    {
+        return aShip == null;
+    }
+
+    public boolean gotHit()
     {
         return aHit;
     }
@@ -25,6 +45,12 @@ public class OceanBlock
     public void setShip(fleet.Ship pShip)
     {
         aShip = pShip;
+    }
+
+    public boolean hasSunk()
+    {
+        if (aShip == null){return false;}
+        return aShip.hasSunk();
     }
 
 

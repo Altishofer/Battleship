@@ -6,18 +6,26 @@ public class Ship
 {
 
     private final ArrayList<String> aCoordinates;
-    private final char aType;
+    private final String aType;
     private int aSize;
 
-    public Ship(char pType, ArrayList<String> pCoordinates)
+    public String toString() {
+        return aType;
+    }
+
+    public Ship(String pType, ArrayList<String> pCoordinates)
     {
         this.aType = pType;
         this.aSize = pCoordinates.size();
         this.aCoordinates = pCoordinates;
     }
-    public void gotHit()
+    public void setHit()
     {
         aSize -= 1;
+    }
+    public boolean hasSunk()
+    {
+        return aSize <= 0;
     }
 
     public ArrayList getCoordinates()
