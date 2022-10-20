@@ -40,13 +40,12 @@ public class Grid {
         return copyGrid;
     }
 
-    public void setShip(ArrayList<String> pCoordinate)
+    public void setShip(Ship pShip)
     {
-        Ship ship = new Ship(pCoordinate);
-        for (String coor : pCoordinate)
+        for (String coor : pShip.getCoordinates())
         {
             Block block = getBlock(coor);
-            block.setShip(ship);
+            block.setShip(pShip);
         }
     }
 

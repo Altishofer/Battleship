@@ -1,15 +1,16 @@
 package ui;
 
-import java.util.ArrayList;
+import player.Npc;
+import player.User;
 
 public class Board {
+    private User user = new User();
+    private Npc npc = new Npc();
 
-    public Grid playerGrid;
-    public Grid npcGrid;
     public Board ()
     {
-        playerGrid = new Grid();
-        npcGrid = new Grid();
+
+
     }
     private final String titleOceanGrid = "==== OCEAN GRID ====";
     private final String titleTargetGrid = "==== TARGET GRID ====";

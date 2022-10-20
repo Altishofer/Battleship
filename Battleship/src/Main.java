@@ -9,10 +9,9 @@ import java.util.Scanner;
 
 public class Main
 {
-    static final Board board;
+    static final Board board = new Board();
     public static void main(String[] args)
     {
-        board = new Board();
 
     }
 
