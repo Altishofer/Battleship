@@ -42,8 +42,7 @@ public class User implements Player{
             //String line = scanner.nextLine();
             String line = "A0,B0,C0,D0,E0,F0";
             ArrayList<String> coordinates = new ArrayList<>(Arrays.asList(line.split(",")));
-            for (String c : coordinates){System.out.println();}
-            if(ui.GridUtils.coordinatesAreValid(coordinates))
+            if(ui.GridUtils.coordinatesAreValid(coordinates) && aGrid.isFree(coordinates))
             {
                 pShip.setCoordinates(coordinates);
                 aFleet.addShip(pShip);

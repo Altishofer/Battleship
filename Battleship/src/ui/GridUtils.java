@@ -23,27 +23,18 @@ public class GridUtils
 
     public static boolean coordinatesAreValid(String coordinate)
     {
-        if (coordinate.length() != 2 || !isNumeric(coordinate.charAt(1)))
-        {
-            return false;
-        }
+        if (coordinate.length() != 2 || !isNumeric(coordinate.charAt(1))){return false;}
         int[] convCoor = convertCoordinates(coordinate);
-        if (convCoor[0] > 9 || convCoor[1] > 9)
-        {
-            return false;
-        }
+        if (convCoor[0] > 9 || convCoor[1] > 9){return false;}
         return true;
     }
 
     public static int[] convertCoordinates(String coordinate)
     {
-        int column;
-        int row;
+        int column, row;
         coordinate = coordinate.toUpperCase();
         column = coordinate.charAt(0) - 'A';
         row = coordinate.charAt(1) - '0';
-        //System.out.println(column);
-        //System.out.println(row);
         return new int[] {row, column};
     }
 }

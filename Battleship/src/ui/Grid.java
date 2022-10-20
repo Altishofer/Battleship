@@ -12,6 +12,13 @@ public class Grid {
 
     public Grid ()
     {
+        for (int i = 0; i < aGrid.length; i++)
+        {
+            for (int j = 0; j < aGrid[i].length; j++)
+            {
+                aGrid[i][j] = new Block();
+            }
+        }
         fleet = new Fleet();
     }
     public String[][] getOceanGridStrings(){
@@ -65,6 +72,16 @@ public class Grid {
     {
         int[] coor = GridUtils.convertCoordinates(pCoordinate);
         return !aGrid[coor[0]][coor[1]].hasShip();
+    }
+
+    public boolean isFree(ArrayList<String> coordinates)
+    {
+        boolean free = true;
+        for (String coor : coordinates)
+        {
+            if (!isFree(coor)){return false;}
+        }
+        return free;
     }
 
     private boolean allInputCorrect(ArrayList<String> coordinates)

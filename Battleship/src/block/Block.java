@@ -27,7 +27,7 @@ public class Block
         return " ";
     }
 
-    public boolean hasShip(){return aShip == null;}
+    public boolean hasShip(){return aShip != null;}
     public boolean gotHit(){return aHit;}
     public void setShip(fleet.Ship pShip){aShip = pShip;}
     public boolean hasSunk()
