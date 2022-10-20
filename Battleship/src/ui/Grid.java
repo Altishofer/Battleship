@@ -1,18 +1,54 @@
 package ui;
 
-import block.OceanBlock;
+import block.Block;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+public class Grid {
+    private Block[][] aGrid = new Block[10][10];
 
-public abstract class Grid implements Iterable
-{
+    public String[][] getOceanGridStrings(){
+        String[][] copyGrid = new String[10][10];
 
-    public Iterator<OceanBlock> iterator()
-    {
-        return new CustomIteratorGrid(this);
+        for (int i = 0; i < aGrid.length; i++)
+        {
+            for (int j = 0; j < aGrid[i].length; j++)
+            {
+                copyGrid[i][j] = aGrid[i][j].toStringOcean();
+            }
+        }
+        return copyGrid;
     }
+
+    public String[][] getOceanGridStrings(){
+        String[][] copyGrid = new String[10][10];
+
+        for (int i = 0; i < aGrid.length; i++)
+        {
+            for (int j = 0; j < aGrid[i].length; j++)
+            {
+                copyGrid[i][j] = aGrid[i][j].toStringTarget();
+            }
+        }
+        return copyGrid;
+    }
+
+    public void setShip(String pCoordinate, fleet.Ship pShip)
+    {
+        Block block = getBlock(pCoordinate);
+        block.setShip(pShip);
+    }
+
+    public void setHit(String pCoordinate)
+    {
+        Block block = getBlock(pCoordinate);
+        block.setHit();
+    }
+
+    private Block getBlock(String pCoordinate)
+    {
+        int[] coor = convertCoordinates(pCoordinate);
+        return aGrid[coor[0]][coor[1]];
+    }
+
 
     private static boolean isNumeric(char ch) {
         try {
@@ -48,32 +84,6 @@ public abstract class Grid implements Iterable
 
         return new int[] {column, row};
     }
-}
-
-class CustomIteratorGrid implements Iterator<OceanBlock>
-{
-    int curr = 0;
-    OceanGrid aGrid;
-
-    public CustomIteratorGrid(OceanGrid pGrid)
-    {
-        aGrid = pGrid;
-    }
-    public boolean hasNext()
-    {
-        if (curr >= 81){
-            return false;
-        }
-        return true;
-    }
-    public OceanBlock next()
-    {
-        int tempX = curr % 9;
-        int tempY = curr / 9;
-        return aGrid[tempY][tempX].type;
-    }
-
-    public  void remove(){}
 
 
 }

@@ -1,6 +1,6 @@
 package block;
 
-public class OceanBlock
+public class Block
 {
     private boolean aHit = false;
     private fleet.Ship aShip = null;
@@ -17,20 +17,38 @@ public class OceanBlock
         return true;
     }
 
-    public String toString() {
-        if (aShip == null)
-        {
-            return "|";
-        }
-        if (aShip.hasSunk())
+    public String toStringOcean() {
+        if (aShip != null && !aHit)
         {
             return aShip.toString();
         }
-        if (aHit)
+        if (aShip != null && aHit)
         {
             return "X";
         }
+        if (aHit)
+        {
+            return "0";
+        }
+        return " ";
     }
+
+    public String toStringTarget() {
+        if (aShip != null && aHit && aShip.hasSunk())
+        {
+            return aShip.toString();
+        }
+        if (aShip != null && aHit)
+        {
+            return "X";
+        }
+        if (aHit)
+        {
+            return "0";
+        }
+        return " ";
+    }
+
 
     public boolean hasShip()
     {
