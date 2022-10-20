@@ -39,9 +39,11 @@ public class User implements Player{
         Scanner scanner = new Scanner(System.in);
         System.out.println(String.format("Set up %s by typing %d valid coordinates", pShip.toString(), pShip.getSize()));
         while (true){
-            String line = scanner.nextLine();
+            //String line = scanner.nextLine();
+            String line = "A0,B0,C0,D0,E0,F0";
             ArrayList<String> coordinates = new ArrayList<>(Arrays.asList(line.split(",")));
-            if(!ui.GridUtils.coordinatesAreValid(coordinates))
+            for (String c : coordinates){System.out.println();}
+            if(ui.GridUtils.coordinatesAreValid(coordinates))
             {
                 pShip.setCoordinates(coordinates);
                 aFleet.addShip(pShip);

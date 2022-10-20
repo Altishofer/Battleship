@@ -23,7 +23,7 @@ public class GridUtils
 
     public static boolean coordinatesAreValid(String coordinate)
     {
-        if (coordinate.length() != 2 && isNumeric(coordinate.charAt(0)))
+        if (coordinate.length() != 2 || !isNumeric(coordinate.charAt(1)))
         {
             return false;
         }
@@ -41,7 +41,9 @@ public class GridUtils
         int row;
         coordinate = coordinate.toUpperCase();
         column = coordinate.charAt(0) - 'A';
-        row = coordinate.charAt(1) - '1';
-        return new int[] {column, row};
+        row = coordinate.charAt(1) - '0';
+        //System.out.println(column);
+        //System.out.println(row);
+        return new int[] {row, column};
     }
 }

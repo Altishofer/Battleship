@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Ship
 {
-    private ArrayList<String> aCoordinates;
+    private ArrayList<String> aCoordinates = new ArrayList<String>();
     private final String aType;
     private int aSize;
     public Ship(String pType, int pSize)

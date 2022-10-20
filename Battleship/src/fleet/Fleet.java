@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Fleet
 {
-    private ArrayList<Ship> aFleet;
+    private ArrayList<Ship> aFleet = new ArrayList<Ship>();
 
     public void addShip(Ship pShip){aFleet.add(pShip);}
 
