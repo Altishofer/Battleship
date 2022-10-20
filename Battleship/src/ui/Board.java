@@ -6,8 +6,13 @@ public class Board {
 
     public Grid playerGrid;
     public Grid npcGrid;
+    public Board ()
+    {
+        playerGrid = new Grid();
+        npcGrid = new Grid();
+    }
     private final String titleOceanGrid = "==== OCEAN GRID ====";
-    private final String titelTargetGrid = "==== TARGET GRID ====";
+    private final String titleTargetGrid = "==== TARGET GRID ====";
     private final String letterCoordinates = "A B C D E F G H I J";
     private final String delimiter = "+-+-+-+-+-+-+-+-+-+-+";
 

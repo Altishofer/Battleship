@@ -9,9 +9,14 @@ import java.util.Scanner;
 
 public class Main
 {
-    Board board = new Board();
+    static final Board board;
     public static void main(String[] args)
     {
+        System.out.println("DEFINE FLEET by following rules");
+        System.out.println("- type the coordinates seperated by commas");
+        System.out.println("- all coordinates need form a line (vertical or horizontal)");
+        System.out.println("- type as many coordinates as asked by the system\n");
+        board = new Board();
 
     }
 

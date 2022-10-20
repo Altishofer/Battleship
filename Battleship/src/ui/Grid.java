@@ -1,12 +1,19 @@
 package ui;
 
 import block.Block;
+import fleet.Fleet;
+import fleet.Ship;
 
 import java.util.ArrayList;
 
 public class Grid {
     private Block[][] aGrid = new Block[10][10];
+    private fleet.Fleet fleet;
 
+    public Grid ()
+    {
+        fleet = new Fleet();
+    }
     public String[][] getOceanGridStrings(){
         String[][] copyGrid = new String[10][10];
 
@@ -33,12 +40,13 @@ public class Grid {
         return copyGrid;
     }
 
-    public void setShip(ArrayList<String> pCoordinate, fleet.Ship pShip)
+    public void setShip(ArrayList<String> pCoordinate)
     {
+        Ship ship = new Ship(pCoordinate);
         for (String coor : pCoordinate)
         {
             Block block = getBlock(coor);
-            block.setShip(pShip);
+            block.setShip(ship);
         }
     }
 
@@ -50,50 +58,56 @@ public class Grid {
 
     private Block getBlock(String pCoordinate)
     {
-        int[] coor = convertCoordinates(pCoordinate);
+        int[] coor = GridUtils.convertCoordinates(pCoordinate);
         return aGrid[coor[0]][coor[1]];
     }
 
     public boolean isFree(String pCoordinate)
     {
-        int[] coor = convertCoordinates(pCoordinate);
+        int[] coor = GridUtils.convertCoordinates(pCoordinate);
         return !aGrid[coor[0]][coor[1]].hasShip();
     }
 
-
-    private static boolean isNumeric(char ch) {
-        try {
-            Double.parseDouble(String.valueOf(ch));
-            return true;
-        } catch(NumberFormatException e){
-            return false;
+    private boolean allInputCorrect(ArrayList<String> coordinates)
+    {
+        for (String coor : coordinates)
+        {
+            if (!GridUtils.coordinatesAreValid(coor)){return false;}
         }
+        if (!coordinatesAreFree(coordinates)){return false;}
+        if (!coordinatesFormLine(coordinates)) {return false;}
+        return true;
+
+    }
+    private boolean coordinatesFormLine(ArrayList<String> coordinates){
+        //TODO: check if all coordinates are without gaps between them
+        String row =  String.valueOf(coordinates.get(0).charAt(0));
+        String column = String.valueOf(coordinates.get(0).charAt(1));
+        boolean allInLine = true;
+        boolean allInRow = true;
+        for (String coor : coordinates)
+        {
+            if (!coor.startsWith(row))
+            {
+                allInLine = false;
+            }
+            if (!coor.startsWith(column))
+            {
+                allInRow = false;
+            }
+        }
+        return allInLine || allInRow;
     }
 
-    public static boolean coordinatesAreValid(String coordinate)
-    {
-        if (coordinate.length() != 2 && isNumeric(coordinate.charAt(0)))
+    private boolean coordinatesAreFree(ArrayList<String> coordinates){
+        for (String coor : coordinates)
         {
-            return false;
-        }
-        int[] convCoor = convertCoordinates(coordinate);
-        if (convCoor[0] > 9 || convCoor[1] > 9)
-        {
-            return false;
+            if (this.isFree(coor))
+            {
+                return false;
+            }
         }
         return true;
-    }
-
-    public static int[] convertCoordinates(String coordinate)
-    {
-        int column;
-        int row;
-        coordinate = coordinate.toUpperCase();
-
-        column = coordinate.charAt(0) - 'A';
-        row = coordinate.charAt(1) - '1';
-
-        return new int[] {column, row};
     }
 
 
