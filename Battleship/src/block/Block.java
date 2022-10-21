@@ -14,14 +14,14 @@ public class Block
     }
 
     public String toStringOcean() {
-        if (aShip != null && !aHit){return aShip.toString();}
+        if (aShip != null && !aHit){return Character.toString(aShip.toString().charAt(0));}
         if (aShip != null && aHit){return "X";}
         if (aHit){return "0";}
         return " ";
     }
 
     public String toStringTarget() {
-        if (aShip != null && aHit && aShip.hasSunk()){return aShip.toString();}
+        if (aShip != null && aHit && aShip.hasSunk()){return Character.toString(aShip.toString().charAt(0));}
         if (aShip != null && aHit){return "X";}
         if (aHit){return "0";}
         return " ";

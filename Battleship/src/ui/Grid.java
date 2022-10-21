@@ -76,12 +76,11 @@ public class Grid {
 
     public boolean isFree(ArrayList<String> coordinates)
     {
-        boolean free = true;
         for (String coor : coordinates)
         {
             if (!isFree(coor)){return false;}
         }
-        return free;
+        return true;
     }
 
     private boolean allInputCorrect(ArrayList<String> coordinates)

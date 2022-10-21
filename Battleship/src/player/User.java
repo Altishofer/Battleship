@@ -25,27 +25,40 @@ public class User implements Player{
         System.out.println("- type as many coordinates as asked by the system\n");
         setFleet();
     }
+
+    public Grid getGrid()
+    {
+        return aGrid;
+    }
     @Override
     public void setFleet()
     {
+        /*
         for (int i=0; i<1; i++){configureShip(new Carrier());}
         for (int i=0; i<2; i++){configureShip(new Battleship());}
         for (int i=0; i<3; i++){configureShip(new Submarine());}
         for (int i=0; i<4; i++){configureShip(new PatrolBoat());}
+         */
+        configureShip(new Carrier(), "A0,B0,C0,D0,E0,F0");
+        configureShip(new Battleship(), "A1,B1,C1,D1");
+        configureShip(new Submarine(), "A2,B2,C2");
+        configureShip(new PatrolBoat(), "A3,B3");
     }
 
-    private void configureShip(Ship pShip)
+    private void configureShip(Ship pShip, String debug)
     {
         Scanner scanner = new Scanner(System.in);
         System.out.println(String.format("Set up %s by typing %d valid coordinates", pShip.toString(), pShip.getSize()));
         while (true){
             //String line = scanner.nextLine();
-            String line = "A0,B0,C0,D0,E0,F0";
+            String line = debug;
             ArrayList<String> coordinates = new ArrayList<>(Arrays.asList(line.split(",")));
-            if(ui.GridUtils.coordinatesAreValid(coordinates) && aGrid.isFree(coordinates))
+            if(ui.GridUtils.coordinatesAreValid(coordinates) && aGrid.isFree(coordinates) && coordinates.size() == pShip.getSize())
             {
+
                 pShip.setCoordinates(coordinates);
                 aFleet.addShip(pShip);
+                aGrid.setShip(pShip);
                 return;
             }
             System.out.println("Given Input is not correct, please try again");
@@ -54,4 +67,5 @@ public class User implements Player{
 
     @Override
     public void nextMove(){}
+
 }
