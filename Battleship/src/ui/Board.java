@@ -7,14 +7,30 @@ public class Board {
     private User user = new User();
     private Npc npc = new Npc();
 
-    public Board ()
+    public boolean gameIsOver()
     {
+        if (user.defeated())
+        {
+            System.out.println("User has been defeated!");
+            return true;
+        }
+        if (npc.defeated())
+        {
+            System.out.println("Npc has been defeated!");
+            return true;
+        }
+        return false;
     }
 
     public void npcMove()
     {
-        String shot = npc.nextMove();
-        user.getGrid().setHit(shot);
+        while (true) {
+            String shot = npc.nextMove();
+            if (!user.getGrid().beenShot(shot)) {
+                user.getGrid().setHit(shot);
+                break;
+            }
+        }
     }
 
     public void userMove()

@@ -19,6 +19,7 @@ public class Main
             board.printTargetGrid();
             board.printOceanGrid();
             board.npcMove();
+            if (board.gameIsOver()){break;}
         }
     }
 

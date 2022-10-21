@@ -25,13 +25,13 @@ public class Npc implements Player
     public String nextMove()
     {
         final String upper = "ABCDEFGHIJ";
+        Random ran = new Random();
         while (true)
         {
-            Random ran = new Random();
             String letter = Character.toString(upper.charAt(ran.nextInt(9)));
             String number = Integer.toString(ran.nextInt(10));
             String coordinate = letter + number;
-            if (ui.GridUtils.coordinatesAreValid(coordinate) && !aGrid.beenShot(coordinate)){return coordinate;}
+            if (ui.GridUtils.coordinatesAreValid(coordinate)){return coordinate;}
         }
     }
 
@@ -42,6 +42,11 @@ public class Npc implements Player
         configureShip(new Battleship(), "A1,B1,C1,D1");
         configureShip(new Submarine(), "A2,B2,C2");
         configureShip(new PatrolBoat(), "A3,B3");
+    }
+
+    public boolean defeated()
+    {
+        return aFleet.gameLost();
     }
 
     public Grid getGrid()

@@ -19,7 +19,7 @@ public class User implements Player{
 
     public User()
     {
-        System.out.println("DEFINE FLEET by following rules");
+        System.out.println("define your fleet by following rules");
         System.out.println("- type the coordinates seperated by commas");
         System.out.println("- all coordinates need form a line (vertical or horizontal)");
         System.out.println("- type as many coordinates as asked by the system\n");
@@ -30,7 +30,7 @@ public class User implements Player{
     {
         return aGrid;
     }
-    @Override
+
     public void setFleet()
     {
         /*
@@ -42,7 +42,7 @@ public class User implements Player{
         configureShip(new Carrier(), "A0,B0,C0,D0,E0,F0");
         configureShip(new Battleship(), "A1,B1,C1,D1");
         configureShip(new Submarine(), "A2,B2,C2");
-        configureShip(new PatrolBoat(), "A3,B3");
+        for (int i=0; i<4; i++){configureShip(new PatrolBoat(), new String());}
     }
 
     private void configureShip(Ship pShip, String debug)
@@ -50,22 +50,50 @@ public class User implements Player{
         Scanner scanner = new Scanner(System.in);
         System.out.println(String.format("Set up %s by typing %d valid coordinates", pShip.toString(), pShip.getSize()));
         while (true){
-            //String line = scanner.nextLine();
-            String line = debug;
+            String line;
+            //TODO: remove debug features
+            if (debug.isEmpty())
+            {
+                line = scanner.nextLine();
+            }
+            else {
+                line = debug;
+            }
             ArrayList<String> coordinates = new ArrayList<>(Arrays.asList(line.split(",")));
-            if(ui.GridUtils.coordinatesAreValid(coordinates) && aGrid.isFree(coordinates) && coordinates.size() == pShip.getSize())
+            Boolean allGood = true;
+            if (!ui.GridUtils.coordinatesAreValid(coordinates))
+            {
+                System.out.println("coordinates are not valid");
+                allGood = false;
+            }
+            if (allGood && coordinates.size() != pShip.getSize())
+            {
+                System.out.println("number of coordinates is not correct");
+                allGood = false;
+            }
+            if (allGood && !aGrid.isFree(coordinates))
+            {
+                System.out.println("some coordinates are already occupied");
+                allGood = false;
+            }
+            if(allGood)
             {
 
                 pShip.setCoordinates(coordinates);
                 aFleet.addShip(pShip);
                 aGrid.setShip(pShip);
+                System.out.println(String.format("All coordinates are valid -> %s was created\n", pShip.toString()));
                 return;
             }
-            System.out.println("Given Input is not correct, please try again");
+            System.out.println("Please try again");
         }
     }
 
-    @Override
+    public boolean defeated()
+    {
+        return aFleet.gameLost();
+    }
+
     public String nextMove()
     {
         Scanner scanner = new Scanner(System.in);
