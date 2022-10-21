@@ -66,6 +66,15 @@ public class User implements Player{
     }
 
     @Override
-    public void nextMove(){}
-
+    public String nextMove()
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(String.format("Type a single coordinate to shoot"));
+        while (true)
+        {
+            String coordinate = scanner.nextLine();
+            if (ui.GridUtils.coordinatesAreValid(coordinate)){return coordinate;}
+            System.out.println(String.format("The given coordinate (%s) is not valid, try again! ;)", coordinate));
+        }
+    }
 }

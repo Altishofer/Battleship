@@ -74,6 +74,12 @@ public class Grid {
         return !aGrid[coor[0]][coor[1]].hasShip();
     }
 
+    public boolean beenShot(String pCoordinate)
+    {
+        int[] coor = GridUtils.convertCoordinates(pCoordinate);
+        return aGrid[coor[0]][coor[1]].gotHit();
+    }
+
     public boolean isFree(ArrayList<String> coordinates)
     {
         for (String coor : coordinates)

@@ -9,8 +9,26 @@ public class Board {
 
     public Board ()
     {
+    }
 
+    public void npcMove()
+    {
+        String shot = npc.nextMove();
+        user.getGrid().setHit(shot);
+    }
 
+    public void userMove()
+    {
+        while (true)
+        {
+            String shot = user.nextMove();
+            if (!npc.getGrid().beenShot(shot))
+            {
+                npc.getGrid().setHit(shot);
+                break;
+            }
+            System.out.println(String.format("The given coordinate (%s) has already been shot, try again! ;)", shot));
+        }
     }
     private final String titleOceanGrid = "===== OCEAN GRID =====";
     private final String titleTargetGrid = "===== TARGET GRID =====";
@@ -40,7 +58,7 @@ public class Board {
     }
 
     public void printTargetGrid(){
-        String[][] oceanBoard = user.getGrid().getTargetGridStrings();
+        String[][] oceanBoard = npc.getGrid().getTargetGridStrings();
         System.out.println(titleTargetGrid);
         System.out.println(letterCoordinates);
         System.out.println(delimiter1);

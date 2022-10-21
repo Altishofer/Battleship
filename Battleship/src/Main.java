@@ -6,11 +6,40 @@ import java.util.Random;
 
 public class Main
 {
-    static final Board board = new Board();
+    private static final Board board = new Board();
     public static void main(String[] args)
     {
-        board.printTargetGrid();
-        board.printOceanGrid();
+        while(true)
+        {
+            clearConsole();
+            board.printTargetGrid();
+            board.printOceanGrid();
+            board.userMove();
+
+            board.printTargetGrid();
+            board.printOceanGrid();
+            board.npcMove();
+        }
     }
 
+    public final static void clearConsole()
+    {
+        try
+        {
+            final String os = System.getProperty("os.name");
+
+            if (os.contains("Windows"))
+            {
+                Runtime.getRuntime().exec("cls");
+            }
+            else
+            {
+                Runtime.getRuntime().exec("clear");
+            }
+        }
+        catch (final Exception e)
+        {
+            //  Handle any exceptions.
+        }
+    }
 }

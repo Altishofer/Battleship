@@ -10,6 +10,7 @@ import ui.Grid;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Npc implements Player
@@ -21,8 +22,17 @@ public class Npc implements Player
         setFleet();
     }
     @Override
-    public void nextMove()
+    public String nextMove()
     {
+        final String upper = "ABCDEFGHIJ";
+        while (true)
+        {
+            Random ran = new Random();
+            String letter = Character.toString(upper.charAt(ran.nextInt(9)));
+            String number = Integer.toString(ran.nextInt(10));
+            String coordinate = letter + number;
+            if (ui.GridUtils.coordinatesAreValid(coordinate) && !aGrid.beenShot(coordinate)){return coordinate;}
+        }
     }
 
     @Override
@@ -32,6 +42,11 @@ public class Npc implements Player
         configureShip(new Battleship(), "A1,B1,C1,D1");
         configureShip(new Submarine(), "A2,B2,C2");
         configureShip(new PatrolBoat(), "A3,B3");
+    }
+
+    public Grid getGrid()
+    {
+        return aGrid;
     }
 
     private void configureShip(Ship pShip, String debug)
