@@ -1,8 +1,6 @@
 
 import ui.Board;
-
 import java.util.Random;
-
 
 public class Main
 {
@@ -14,12 +12,14 @@ public class Main
             clearConsole();
             board.printTargetGrid();
             board.printOceanGrid();
+            if (board.gameIsOver()){break;}
             board.userMove();
 
             board.printTargetGrid();
             board.printOceanGrid();
-            board.npcMove();
             if (board.gameIsOver()){break;}
+            board.npcMove();
+
         }
     }
 
