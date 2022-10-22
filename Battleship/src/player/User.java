@@ -12,14 +12,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class User implements Player
+public class User extends Player
 {
-
-    private final Fleet aFleet = new Fleet();
-    private final Grid aGrid = new Grid();
-
     public User()
     {
+        super();
         System.out.println("define your fleet by following rules");
         System.out.println("- type the coordinates seperated by commas");
         System.out.println("- all coordinates need form a line (vertical or horizontal)");
@@ -27,13 +24,13 @@ public class User implements Player
         setFleet();
     }
 
-
     // TODO: remove or adapt return of Grid for encapsulation
     public Grid getGrid()
     {
         return aGrid;
     }
 
+    @Override
     public void setFleet()
     {
         /*
@@ -92,11 +89,13 @@ public class User implements Player
         }
     }
 
+    @Override
     public boolean defeated()
     {
         return aFleet.defeated();
     }
 
+    @Override
     public String nextMove()
     {
         Scanner scanner = new Scanner(System.in);

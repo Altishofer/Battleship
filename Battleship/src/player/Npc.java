@@ -12,12 +12,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Npc implements Player
+public class Npc extends Player
 {
-    private final Fleet aFleet = new Fleet();
-    private final Grid aGrid = new Grid();
     public Npc()
     {
+        super();
         setFleet();
     }
     @Override
@@ -43,6 +42,7 @@ public class Npc implements Player
         configureShip(new PatrolBoat(), "A3,B3");
     }
 
+    @Override
     public boolean defeated()
     {
         return aFleet.defeated();

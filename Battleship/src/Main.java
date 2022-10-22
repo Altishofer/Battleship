@@ -9,7 +9,7 @@ public class Main
     {
         while(true)
         {
-            clearConsole();
+            //clearConsole();
             board.printTargetGrid();
             board.printOceanGrid();
             if (board.gameIsOver()){break;}

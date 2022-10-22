@@ -1,5 +1,7 @@
 package fleet;
 
+import fleet.ShipTypes.Battleship;
+
 import java.util.ArrayList;
 
 public abstract class Ship
@@ -13,17 +15,17 @@ public abstract class Ship
         aType = pType;
         aSize = pSize;
     }
-    public int getSize(){return aSize;}
-    public String toString() {return aType;}
-    public void setHit() {aSize -= 1;}
-    public boolean hasSunk(){return aSize <= 0;}
-    public ArrayList<String> getCoordinates()
+    public final int getSize(){return aSize;}
+    public final String toString() {return aType;}
+    public final void setHit() {aSize -= 1;}
+    public final boolean hasSunk(){return aSize <= 0;}
+    public final ArrayList<String> getCoordinates()
     {
         ArrayList<String> copy = new ArrayList<String>();
         for (String elem : aCoordinates){copy.add(elem);}
         return copy;
     }
-    public void setCoordinates(ArrayList<String> pCoordinates)
+    public final void setCoordinates(ArrayList<String> pCoordinates)
     {
         for (String coor : pCoordinates)
         {

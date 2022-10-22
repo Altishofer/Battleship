@@ -1,7 +1,14 @@
 package player;
 
-public interface Player {
-    public String nextMove();
-    public void setFleet();
-    public boolean defeated();
+import fleet.Fleet;
+import ui.Grid;
+
+public abstract class Player
+{
+    protected final Fleet aFleet = new Fleet();
+    protected final Grid aGrid = new Grid();
+
+    public abstract String nextMove();
+    public abstract void setFleet();
+    public abstract boolean defeated();
 }

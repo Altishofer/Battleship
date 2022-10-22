@@ -7,8 +7,8 @@ import fleet.Ship;
 import java.util.ArrayList;
 
 public class Grid {
-    private Block[][] aGrid = new Block[10][10];
-    private fleet.Fleet aFleet;
+    private final Block[][] aGrid = new Block[10][10];
+    private final fleet.Fleet aFleet;
 
     public Grid ()
     {

@@ -4,6 +4,7 @@ public class Block
 {
     private boolean aHit = false;
     // TODO: replace null with anonymous class
+    // TODO: check if final possible
     private fleet.Ship aShip = null;
 
     // TODO: check if needs boolean
