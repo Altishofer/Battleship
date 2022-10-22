@@ -10,6 +10,7 @@ public class Block
     // TODO: check if needs boolean
     public void setHit()
     {
+        aHit = true;
         if (aShip == null){return;}
         aShip.setHit();
     }
