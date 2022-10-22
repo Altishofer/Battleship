@@ -7,6 +7,7 @@ public abstract class Ship
     private ArrayList<String> aCoordinates = new ArrayList<String>();
     private final String aType;
     private int aSize;
+
     public Ship(String pType, int pSize)
     {
         aType = pType;

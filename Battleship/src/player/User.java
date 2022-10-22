@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class User implements Player{
+public class User implements Player
+{
 
     private final Fleet aFleet = new Fleet();
     private final Grid aGrid = new Grid();
@@ -26,6 +27,8 @@ public class User implements Player{
         setFleet();
     }
 
+
+    // TODO: remove or adapt return of Grid for encapsulation
     public Grid getGrid()
     {
         return aGrid;
@@ -76,9 +79,9 @@ public class User implements Player{
                 System.out.println("some coordinates are already occupied");
                 allGood = false;
             }
+            // TODO: check if all coordinates in line (see in GridUtils) and next to each other
             if(allGood)
             {
-
                 pShip.setCoordinates(coordinates);
                 aFleet.addShip(pShip);
                 aGrid.setShip(pShip);
@@ -91,7 +94,7 @@ public class User implements Player{
 
     public boolean defeated()
     {
-        return aFleet.gameLost();
+        return aFleet.defeated();
     }
 
     public String nextMove()

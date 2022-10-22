@@ -3,27 +3,27 @@ package block;
 public class Block
 {
     private boolean aHit = false;
+    // TODO: replace null with anonymous class
     private fleet.Ship aShip = null;
 
-    public boolean setHit()
+    // TODO: check if needs boolean
+    public void setHit()
     {
-        aHit = true;
-        if (aShip == null){return false;}
+        if (aShip == null){return;}
         aShip.setHit();
-        return true;
     }
 
     public String toStringOcean() {
         if (aShip != null && !aHit){return Character.toString(aShip.toString().charAt(0));}
         if (aShip != null && aHit){return "X";}
-        if (aHit){return "0";}
+        if (aHit){return "o";}
         return " ";
     }
 
     public String toStringTarget() {
         if (aShip != null && aHit && aShip.hasSunk()){return Character.toString(aShip.toString().charAt(0));}
         if (aShip != null && aHit){return "X";}
-        if (aHit){return "0";}
+        if (aHit){return "o";}
         return " ";
     }
 

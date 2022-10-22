@@ -2,7 +2,7 @@ package ui;
 
 import java.util.ArrayList;
 
-public class GridUtils
+public abstract class GridUtils
 {
     private static boolean isNumeric(char ch) {
         try {

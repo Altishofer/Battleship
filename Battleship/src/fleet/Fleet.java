@@ -8,13 +8,11 @@ public class Fleet
 
     public void addShip(Ship pShip){aFleet.add(pShip);}
 
-    public boolean gameLost(){
+    public boolean defeated(){
         for (Ship ship : aFleet)
         {
             if (!ship.hasSunk()){return false;}
         }
         return true;
     }
-
-
 }

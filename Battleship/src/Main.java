@@ -19,7 +19,6 @@ public class Main
             board.printOceanGrid();
             if (board.gameIsOver()){break;}
             board.npcMove();
-
         }
     }
 

@@ -11,7 +11,6 @@ import ui.Grid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Npc implements Player
 {
@@ -46,9 +45,10 @@ public class Npc implements Player
 
     public boolean defeated()
     {
-        return aFleet.gameLost();
+        return aFleet.defeated();
     }
 
+    // TODO: encapsulation
     public Grid getGrid()
     {
         return aGrid;

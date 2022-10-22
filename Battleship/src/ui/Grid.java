@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Grid {
     private Block[][] aGrid = new Block[10][10];
-    private fleet.Fleet fleet;
+    private fleet.Fleet aFleet;
 
     public Grid ()
     {
@@ -19,11 +19,10 @@ public class Grid {
                 aGrid[i][j] = new Block();
             }
         }
-        fleet = new Fleet();
+        aFleet = new Fleet();
     }
     public String[][] getOceanGridStrings(){
         String[][] copyGrid = new String[10][10];
-
         for (int i = 0; i < aGrid.length; i++)
         {
             for (int j = 0; j < aGrid[i].length; j++)
@@ -98,7 +97,6 @@ public class Grid {
         if (!coordinatesAreFree(coordinates)){return false;}
         if (!coordinatesFormLine(coordinates)) {return false;}
         return true;
-
     }
     private boolean coordinatesFormLine(ArrayList<String> coordinates){
         //TODO: check if all coordinates are without gaps between them
@@ -130,6 +128,4 @@ public class Grid {
         }
         return true;
     }
-
-
 }
