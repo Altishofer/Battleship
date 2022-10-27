@@ -1,6 +1,6 @@
 package fleet;
 
-public class ShipFactory
+public abstract class ShipFactory
 {
     public static Ship getShip(String pType)
     {
@@ -19,7 +19,7 @@ public class ShipFactory
         }
         if (pType.equalsIgnoreCase("Submarine"))
         {
-            return new Ship("Submarine", 4);
+            return new Ship("Submarine", 3);
         }
         if (pType.equalsIgnoreCase("Null"))
         {
