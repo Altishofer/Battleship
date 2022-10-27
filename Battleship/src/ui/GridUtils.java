@@ -37,4 +37,18 @@ public abstract class GridUtils
         row = coordinate.charAt(1) - '0';
         return new int[] {row, column};
     }
+
+    public static ArrayList<int[]> convertCoordinates(ArrayList<String> pCoordinate)
+    {
+        int column, row;
+        ArrayList<int[]> res = new ArrayList<int[]>();
+        for (int i = 0; i<pCoordinate.size(); i++)
+        {
+            String tmpCoor = pCoordinate.get(i).toUpperCase();
+            column = tmpCoor.charAt(0) - 'A';
+            row = tmpCoor.charAt(1) - '0';
+            res.add(new int[]{row, column});
+        }
+        return res;
+    }
 }

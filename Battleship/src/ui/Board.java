@@ -25,7 +25,7 @@ public class Board {
     public void npcMove()
     {
         while (true) {
-            String shot = npc.nextMove();
+            int[] shot = npc.nextMove();
             if (!user.getGrid().beenShot(shot)) {
                 user.getGrid().setHit(shot);
                 break;
@@ -37,13 +37,13 @@ public class Board {
     {
         while (true)
         {
-            String shot = user.nextMove();
+            int[] shot = user.nextMove();
             if (!npc.getGrid().beenShot(shot))
             {
                 npc.getGrid().setHit(shot);
                 break;
             }
-            System.out.println(String.format("The given coordinate (%s) has already been shot, try again! ;)", shot));
+            System.out.println("The given coordinate has already been shot, try again!");
         }
     }
     private final String titleOceanGrid = "===== OCEAN GRID =====";

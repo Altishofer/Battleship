@@ -8,7 +8,7 @@ public abstract class Player
     protected final Fleet aFleet = new Fleet();
     protected final Grid aGrid = new Grid();
 
-    public abstract String nextMove();
+    public abstract int[] nextMove();
     public abstract void setFleet();
     public abstract boolean defeated();
 }

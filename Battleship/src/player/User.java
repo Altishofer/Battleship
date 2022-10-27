@@ -1,12 +1,9 @@
 package player;
 
-import fleet.Fleet;
 import fleet.Ship;
-import fleet.ShipTypes.Battleship;
-import fleet.ShipTypes.Carrier;
-import fleet.ShipTypes.PatrolBoat;
-import fleet.ShipTypes.Submarine;
+import fleet.ShipFactory;
 import ui.Grid;
+import ui.GridUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,15 +31,15 @@ public class User extends Player
     public void setFleet()
     {
         /*
-        for (int i=0; i<1; i++){configureShip(new Carrier());}
-        for (int i=0; i<2; i++){configureShip(new Battleship());}
-        for (int i=0; i<3; i++){configureShip(new Submarine());}
-        for (int i=0; i<4; i++){configureShip(new PatrolBoat());}
-         */
-        configureShip(new Carrier(), "A0,B0,C0,D0,E0,F0");
-        configureShip(new Battleship(), "A1,B1,C1,D1");
-        configureShip(new Submarine(), "A2,B2,C2");
-        for (int i=0; i<4; i++){configureShip(new PatrolBoat(), new String());}
+        configureShip(ShipFactory.getShip("Carrier"));
+        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip("Battleship");}
+        for (int i=0; i<3; i++){configureShip(ShipFactory.getShip("Submarine"));}
+        for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
+        */
+        configureShip(ShipFactory.getShip("Carrier"), "A0,B0,C0,D0,E0,F0");
+//        configureShip(ShipFactory.getShip("Battleship"), "A1,B1,C1,D1");
+//        configureShip(ShipFactory.getShip("Submarine"), "A2,B2,C2");
+//        configureShip(ShipFactory.getShip("Patrol Boat"), new String());
     }
 
     private void configureShip(Ship pShip, String debug)
@@ -61,17 +58,19 @@ public class User extends Player
             }
             ArrayList<String> coordinates = new ArrayList<>(Arrays.asList(line.split(",")));
             Boolean allGood = true;
+
             if (!ui.GridUtils.coordinatesAreValid(coordinates))
             {
                 System.out.println("coordinates are not valid");
                 allGood = false;
             }
+            ArrayList<int[]> xyCoordinates = GridUtils.convertCoordinates(coordinates);
             if (allGood && coordinates.size() != pShip.getSize())
             {
                 System.out.println("number of coordinates is not correct");
                 allGood = false;
             }
-            if (allGood && !aGrid.isFree(coordinates))
+            if (allGood && !aGrid.isFree(xyCoordinates))
             {
                 System.out.println("some coordinates are already occupied");
                 allGood = false;
@@ -79,7 +78,7 @@ public class User extends Player
             // TODO: check if all coordinates in line (see in GridUtils) and next to each other
             if(allGood)
             {
-                pShip.setCoordinates(coordinates);
+                pShip.setCoordinates(xyCoordinates);
                 aFleet.addShip(pShip);
                 aGrid.setShip(pShip);
                 System.out.println(String.format("All coordinates are valid -> %s was created\n", pShip.toString()));
@@ -96,15 +95,17 @@ public class User extends Player
     }
 
     @Override
-    public String nextMove()
+    public int[] nextMove()
     {
         Scanner scanner = new Scanner(System.in);
         System.out.println(String.format("Type a single coordinate to shoot"));
         while (true)
         {
             String coordinate = scanner.nextLine();
-            if (ui.GridUtils.coordinatesAreValid(coordinate)){return coordinate;}
-            System.out.println(String.format("The given coordinate (%s) is not valid, try again! ;)", coordinate));
+            if (ui.GridUtils.coordinatesAreValid(coordinate)){
+                return GridUtils.convertCoordinates(coordinate);
+            }
+            System.out.println(String.format("The given coordinate (%s) is not valid, try again!", coordinate));
         }
     }
 }

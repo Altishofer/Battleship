@@ -1,15 +1,12 @@
 package player;
 
-import fleet.Fleet;
-import fleet.Ship;
-import fleet.ShipTypes.Battleship;
-import fleet.ShipTypes.Carrier;
-import fleet.ShipTypes.PatrolBoat;
-import fleet.ShipTypes.Submarine;
+import fleet.ShipFactory;
 import ui.Grid;
 
+import fleet.Ship;
+import ui.GridUtils;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Npc extends Player
@@ -20,26 +17,25 @@ public class Npc extends Player
         setFleet();
     }
     @Override
-    public String nextMove()
+    public int[] nextMove()
     {
         final String upper = "ABCDEFGHIJ";
         Random ran = new Random();
         while (true)
         {
-            String letter = Character.toString(upper.charAt(ran.nextInt(9)));
-            String number = Integer.toString(ran.nextInt(10));
-            String coordinate = letter + number;
-            if (ui.GridUtils.coordinatesAreValid(coordinate)){return coordinate;}
+            int numberX = ran.nextInt(10);
+            int numberY = ran.nextInt(10);
+            return new int[]{numberY, numberX};
         }
     }
 
     @Override
     public void setFleet()
     {
-        configureShip(new Carrier());
-        for (int i=0; i<2; i++){configureShip(new Battleship());}
-        for (int i=0; i<3; i++){configureShip(new Submarine());}
-        for (int i=0; i<4; i++){configureShip(new PatrolBoat());}
+        configureShip(ShipFactory.getShip("Carrier"));
+        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip("Battleship"));}
+        for (int i=0; i<3; i++){configureShip(ShipFactory.getShip("Submarine"));}
+        for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
     }
 
     @Override
@@ -66,14 +62,15 @@ public class Npc extends Player
             {
                 allGood = false;
             }
-            if (allGood && !aGrid.isFree(coordinates))
+            ArrayList<int[]> xyCoordinates = GridUtils.convertCoordinates(coordinates);
+            if (allGood && !aGrid.isFree(xyCoordinates))
             {
                 allGood = false;
             }
             // TODO: check if all coordinates in line (see in GridUtils) and next to each other
             if(allGood)
             {
-                pShip.setCoordinates(coordinates);
+                pShip.setCoordinates(xyCoordinates);
                 aFleet.addShip(pShip);
                 aGrid.setShip(pShip);
                 System.out.println(String.format("NPC successfully placed %s\n", pShip.toString()));

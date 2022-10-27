@@ -48,40 +48,37 @@ public class Grid {
 
     public void setShip(Ship pShip)
     {
-        for (String coor : pShip.getCoordinates())
+        for (int[] coor : pShip.getCoordinates())
         {
             Block block = getBlock(coor);
             block.setShip(pShip);
         }
     }
 
-    public void setHit(String pCoordinate)
+    public void setHit(int[] pCoordinate)
     {
         Block block = getBlock(pCoordinate);
         block.setHit();
     }
 
-    private Block getBlock(String pCoordinate)
+    private Block getBlock(int[] pCoordinate)
     {
-        int[] coor = GridUtils.convertCoordinates(pCoordinate);
-        return aGrid[coor[0]][coor[1]];
+        return aGrid[pCoordinate[0]][pCoordinate[1]];
     }
 
-    public boolean isFree(String pCoordinate)
+    public boolean isFree(int[] pCoordinate)
     {
-        int[] coor = GridUtils.convertCoordinates(pCoordinate);
-        return !aGrid[coor[0]][coor[1]].hasShip();
+        return !aGrid[pCoordinate[0]][pCoordinate[1]].hasShip();
     }
 
-    public boolean beenShot(String pCoordinate)
+    public boolean beenShot(int[] pCoordinate)
     {
-        int[] coor = GridUtils.convertCoordinates(pCoordinate);
-        return aGrid[coor[0]][coor[1]].gotHit();
+        return aGrid[pCoordinate[0]][pCoordinate[1]].gotHit();
     }
 
-    public boolean isFree(ArrayList<String> coordinates)
+    public boolean isFree(ArrayList<int[]> coordinates)
     {
-        for (String coor : coordinates)
+        for (int[] coor : coordinates)
         {
             if (!isFree(coor)){return false;}
         }
@@ -94,7 +91,8 @@ public class Grid {
         {
             if (!GridUtils.coordinatesAreValid(coor)){return false;}
         }
-        if (!coordinatesAreFree(coordinates)){return false;}
+        ArrayList<int[]> yxCoordinates = GridUtils.convertCoordinates(coordinates);
+        if (!coordinatesAreFree(yxCoordinates)){return false;}
         if (!coordinatesFormLine(coordinates)) {return false;}
         return true;
     }
@@ -118,8 +116,8 @@ public class Grid {
         return allInLine || allInRow;
     }
 
-    private boolean coordinatesAreFree(ArrayList<String> coordinates){
-        for (String coor : coordinates)
+    private boolean coordinatesAreFree(ArrayList<int[]> coordinates){
+        for (int[] coor : coordinates)
         {
             if (this.isFree(coor))
             {
