@@ -26,8 +26,8 @@ public class Board {
     {
         while (true) {
             int[] shot = npc.nextMove();
-            if (!user.getGrid().beenShot(shot)) {
-                user.getGrid().setHit(shot);
+            if (!user.beenShot(shot)) {
+                user.setHit(shot);
                 break;
             }
         }
@@ -38,9 +38,9 @@ public class Board {
         while (true)
         {
             int[] shot = user.nextMove();
-            if (!npc.getGrid().beenShot(shot))
+            if (!npc.beenShot(shot))
             {
-                npc.getGrid().setHit(shot);
+                npc.setHit(shot);
                 break;
             }
             System.out.println("The given coordinate has already been shot, try again!");
@@ -54,8 +54,7 @@ public class Board {
     private final String delimiter1 = " +-+-+-+-+-+-+-+-+-+-+";
 
     public void printOceanGrid(){
-        String[][] oceanBoard = user.getGrid().getOceanGridStrings();
-        Grid grid = user.getGrid();
+        String[][] oceanBoard = user.getOceanGridStrings();
         System.out.println(titleOceanGrid);
         System.out.println(letterCoordinates);
         System.out.println(delimiter1);
@@ -75,7 +74,7 @@ public class Board {
     }
 
     public void printTargetGrid(){
-        String[][] oceanBoard = npc.getGrid().getTargetGridStrings();
+        String[][] oceanBoard = npc.getTargetGridStrings();
         System.out.println(titleTargetGrid);
         System.out.println(letterCoordinates);
         System.out.println(delimiter1);

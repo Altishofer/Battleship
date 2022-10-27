@@ -22,11 +22,15 @@ public class User extends Player
         setFleet();
     }
 
+    public boolean beenShot(int[] shot){return aGrid.beenShot(shot);}
+    public void setHit(int[] shot){aGrid.setHit(shot);}
+
+    public String[][] getOceanGridStrings(){return aGrid.getOceanGridStrings();}
+
+    public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
+
     // TODO: remove or adapt return of Grid for encapsulation
-    public Grid getGrid()
-    {
-        return aGrid;
-    }
+    //public Grid getGrid(){return aGrid;}
 
     @Override
     public void setFleet()
