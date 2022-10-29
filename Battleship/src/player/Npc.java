@@ -50,10 +50,7 @@ public class Npc extends Player
     {
         return aFleet.defeated();
     }
-
-    // TODO: encapsulation
-    //public Grid getGrid(){return aGrid;}
-
+    
     private void configureShip(Ship pShip) {
         while (true){
             ArrayList<String> coordinates = getCoordinates(pShip.getSize());
