@@ -7,6 +7,7 @@ import ui.GridUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class User extends Player
@@ -21,11 +22,15 @@ public class User extends Player
         setFleet();
     }
 
+    public boolean beenShot(int[] shot){return aGrid.beenShot(shot);}
+    public void setHit(int[] shot){aGrid.setHit(shot);}
+
+    public String[][] getOceanGridStrings(){return aGrid.getOceanGridStrings();}
+
+    public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
+
     // TODO: remove or adapt return of Grid for encapsulation
-    public Grid getGrid()
-    {
-        return aGrid;
-    }
+    //public Grid getGrid(){return aGrid;}
 
     @Override
     public void setFleet()
@@ -37,9 +42,9 @@ public class User extends Player
         for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
         */
         configureShip(ShipFactory.getShip("Carrier"), "A0,B0,C0,D0,E0,F0");
-//        configureShip(ShipFactory.getShip("Battleship"), "A1,B1,C1,D1");
-//        configureShip(ShipFactory.getShip("Submarine"), "A2,B2,C2");
-//        configureShip(ShipFactory.getShip("Patrol Boat"), new String());
+        configureShip(ShipFactory.getShip("Battleship"), "A1,B1,C1,D1");
+        configureShip(ShipFactory.getShip("Submarine"), "A2,B2,C2");
+        configureShip(ShipFactory.getShip("Patrol Boat"), new String());
     }
 
     private void configureShip(Ship pShip, String debug)
@@ -48,6 +53,9 @@ public class User extends Player
         System.out.print(String.format("Set up %s by typing %d valid coordinates: ", pShip.toString(), pShip.getSize()));
         while (true){
             String line;
+            Boolean allGood = true;
+            ArrayList<String> coordinates = new ArrayList<String>();
+            ArrayList<int[]> xyCoordinates = new ArrayList<int[]>();
             //TODO: remove debug features
             if (debug.isEmpty())
             {
@@ -56,26 +64,36 @@ public class User extends Player
             else {
                 line = debug;
             }
-            ArrayList<String> coordinates = new ArrayList<>(Arrays.asList(line.split(",")));
-            Boolean allGood = true;
-
-            if (!ui.GridUtils.coordinatesAreValid(coordinates))
+            if (line != null && !line.isEmpty())
+            {
+                line = line.replaceAll("\\s+","");
+                coordinates = new ArrayList<String>(List.of(line.split(",")));
+            }
+            else
+            {
+                System.out.println("Given coordinates are empty!");
+                allGood = false;
+            }
+            if (allGood && !ui.GridUtils.coordinatesAreValid(coordinates))
             {
                 System.out.println("Coordinates are not valid!");
                 allGood = false;
             }
-            ArrayList<int[]> xyCoordinates = GridUtils.convertCoordinates(coordinates);
             if (allGood && coordinates.size() != pShip.getSize())
             {
                 System.out.println("Number of coordinates is not correct!");
                 allGood = false;
+            }
+            if (allGood)
+            {
+                xyCoordinates = GridUtils.convertCoordinates(coordinates);
             }
             if (allGood && !aGrid.isFree(xyCoordinates))
             {
                 System.out.println("Some coordinates are already occupied!");
                 allGood = false;
             }
-            // TODO: check if all coordinates in line (see in GridUtils) and next to each other
+            // TODO: check if all coordinates (see in GridUtils) next to each other
             if(allGood)
             {
                 pShip.setCoordinates(xyCoordinates);

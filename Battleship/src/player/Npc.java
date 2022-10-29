@@ -16,6 +16,13 @@ public class Npc extends Player
         super();
         setFleet();
     }
+
+    public boolean beenShot(int[] shot){return aGrid.beenShot(shot);}
+    public void setHit(int[] shot){aGrid.setHit(shot);}
+
+    public String[][] getOceanGridStrings(){return aGrid.getOceanGridStrings();}
+
+    public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
     @Override
     public int[] nextMove()
     {
@@ -43,13 +50,7 @@ public class Npc extends Player
     {
         return aFleet.defeated();
     }
-
-    // TODO: encapsulation
-    public Grid getGrid()
-    {
-        return aGrid;
-    }
-
+    
     private void configureShip(Ship pShip) {
         while (true){
             ArrayList<String> coordinates = getCoordinates(pShip.getSize());
