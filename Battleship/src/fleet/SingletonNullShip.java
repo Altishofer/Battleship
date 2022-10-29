@@ -2,11 +2,15 @@ package fleet;
 
 import java.util.ArrayList;
 
-public class NullShip extends Ship {
+public class SingletonNullShip extends Ship {
 
-    public NullShip() {
+    private static final SingletonNullShip INSTANCE = new SingletonNullShip();
+
+    private SingletonNullShip() {
         super("", 0, true);
     }
+
+    public static SingletonNullShip getInstance() {return INSTANCE;}
     @Override
     public  int getSize(){return 0;}
 
@@ -30,27 +34,4 @@ public class NullShip extends Ship {
 
     @Override
     public  void setCoordinates(ArrayList<int[]> pCoordinates){}
-
-    @Override
-    public boolean equals (Object pObject)
-    {
-        if( pObject == null ) {
-            return false;
-        }
-        else if( pObject == this ) {
-            return true;
-        }
-        else if( pObject.getClass() != getClass()) {
-            return false;
-        }
-        else {
-            return aType == ((Ship)pObject).aType;
-        }
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return aType.hashCode();
-    }
 }

@@ -23,7 +23,7 @@ public abstract class ShipFactory
         }
         if (pType.equalsIgnoreCase("Null"))
         {
-            return new NullShip();
+            return SingletonNullShip.getInstance();
         }
         return null;
     }
