@@ -16,24 +16,20 @@ public class Ship
         aSize = pSize;
         isNull = pIsNull;
     }
-<<<<<<< HEAD
-    public final int getSize(){return aSize;}
-    public final String toString() {return aType;}
-    public final void setHit() {
+    //TODO: removed final to be able to override
+    public int getSize(){return aSize;}
+    //TODO: removed final to be able to override
+    public String toString() {return aType;}
+    //TODO: removed final to be able to override
+    public void setHit() {
         aSize -= 1;
         if(aSize<=0){
             System.out.println("A "+aType+" sunk!");
         }
     }
-    public final boolean hasSunk(){return aSize <= 0;}
-=======
+    //TODO: removed final to be able to override
+    public boolean hasSunk(){return aSize <= 0;}
 
-    public final boolean isNull(){return isNull;}
-    public  int getSize(){return aSize;}
-    public  String toString() {return aType;}
-    public  void setHit() {aSize -= 1;}
-    public  boolean hasSunk(){return aSize <= 0;}
->>>>>>> ac5bf38fed63c3babd42b38f587d8f25cbeefbd6
     public boolean istNullShip(){return aType == "Null";}
     public  ArrayList<int[]> getCoordinates()
     {

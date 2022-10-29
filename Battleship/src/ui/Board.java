@@ -116,8 +116,7 @@ public class Board {
 
     // TODO: potentially dangerous
     private void printFinalGrid(){
-        String[][] oceanBoard = npc.getGrid().getFinalGridStrings();
-        Grid grid = npc.getGrid();
+        String[][] oceanBoard = npc.getFinalGridStrings();
         System.out.println(titleFinalNPCGrid);
         System.out.println(letterCoordinates);
         System.out.println(delimiter1);

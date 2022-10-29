@@ -2,29 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2abc3083-a59d-423e-ae4f-bddb6f5284d8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battleship/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/block/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battleship/block/Block.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/block/BlockType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/fleet/Battleship.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/fleet/Carrier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/fleet/Fleet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battleship/fleet/Fleet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/fleet/PatrolBoat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/fleet/Ship.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battleship/fleet/Ship.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/fleet/Submarine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/player/Computer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battleship/player/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/player/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battleship/player/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/ui/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battleship/ui/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/ui/Grid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Battleship/ui/Grid.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/ui/OceanGrid.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Battleship/ui/TargetGrid.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/block/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/block/Block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fleet/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fleet/Ship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/player/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player/Npc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/player/Npc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Grid.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

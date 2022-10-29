@@ -23,6 +23,8 @@ public class Npc extends Player
     public String[][] getOceanGridStrings(){return aGrid.getOceanGridStrings();}
 
     public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
+
+    public String[][] getFinalGridStrings(){return aGrid.getFinalGridStrings();}
     @Override
     public int[] nextMove()
     {
