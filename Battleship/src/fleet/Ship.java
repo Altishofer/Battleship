@@ -15,7 +15,12 @@ public class Ship
     }
     public final int getSize(){return aSize;}
     public final String toString() {return aType;}
-    public final void setHit() {aSize -= 1;}
+    public final void setHit() {
+        aSize -= 1;
+        if(aSize<=0){
+            System.out.println("A "+aType+" sunk!");
+        }
+    }
     public final boolean hasSunk(){return aSize <= 0;}
     public boolean istNullShip(){return aType == "Null";}
     public final ArrayList<int[]> getCoordinates()

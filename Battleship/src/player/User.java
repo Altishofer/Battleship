@@ -45,7 +45,7 @@ public class User extends Player
     private void configureShip(Ship pShip, String debug)
     {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(String.format("Set up %s by typing %d valid coordinates", pShip.toString(), pShip.getSize()));
+        System.out.print(String.format("Set up %s by typing %d valid coordinates: ", pShip.toString(), pShip.getSize()));
         while (true){
             String line;
             //TODO: remove debug features
@@ -61,18 +61,18 @@ public class User extends Player
 
             if (!ui.GridUtils.coordinatesAreValid(coordinates))
             {
-                System.out.println("coordinates are not valid");
+                System.out.println("Coordinates are not valid!");
                 allGood = false;
             }
             ArrayList<int[]> xyCoordinates = GridUtils.convertCoordinates(coordinates);
             if (allGood && coordinates.size() != pShip.getSize())
             {
-                System.out.println("number of coordinates is not correct");
+                System.out.println("Number of coordinates is not correct!");
                 allGood = false;
             }
             if (allGood && !aGrid.isFree(xyCoordinates))
             {
-                System.out.println("some coordinates are already occupied");
+                System.out.println("Some coordinates are already occupied!");
                 allGood = false;
             }
             // TODO: check if all coordinates in line (see in GridUtils) and next to each other
@@ -98,7 +98,7 @@ public class User extends Player
     public int[] nextMove()
     {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(String.format("Type a single coordinate to shoot"));
+        System.out.print(String.format("Type a single coordinate to shoot: "));
         while (true)
         {
             String coordinate = scanner.nextLine();

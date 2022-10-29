@@ -33,6 +33,18 @@ public class Grid {
         return copyGrid;
     }
 
+    public String[][] getFinalGridStrings(){
+        String[][] copyGrid = new String[10][10];
+        for (int i = 0; i < aGrid.length; i++)
+        {
+            for (int j = 0; j < aGrid[i].length; j++)
+            {
+                copyGrid[i][j] = aGrid[i][j].toStringFinal();
+            }
+        }
+        return copyGrid;
+    }
+
     public String[][] getTargetGridStrings(){
         String[][] copyGrid = new String[10][10];
 

@@ -2,6 +2,7 @@ package ui;
 
 import player.Npc;
 import player.User;
+import java.util.concurrent.TimeUnit;
 
 public class Board {
     private User user = new User();
@@ -12,6 +13,7 @@ public class Board {
         if (user.defeated())
         {
             System.out.println("User has been defeated!");
+            printFinalGrid();
             return true;
         }
         if (npc.defeated())
@@ -24,6 +26,12 @@ public class Board {
 
     public void npcMove()
     {
+        System.out.println("NPC is playing...");
+        try{
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e){
+            // Is this ok?
+        };
         while (true) {
             int[] shot = npc.nextMove();
             if (!user.getGrid().beenShot(shot)) {
@@ -31,10 +39,16 @@ public class Board {
                 break;
             }
         }
+        try{
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e){
+            // Is this ok?
+        };
     }
 
     public void userMove()
     {
+        System.out.println("\nIt is your turn!");
         while (true)
         {
             int[] shot = user.nextMove();
@@ -45,7 +59,13 @@ public class Board {
             }
             System.out.println("The given coordinate has already been shot, try again!");
         }
+        try{
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e){
+            // Is this ok?
+        };
     }
+    private final String titleFinalNPCGrid = "===== NPC GRID =====";
     private final String titleOceanGrid = "===== OCEAN GRID =====";
     private final String titleTargetGrid = "===== TARGET GRID =====";
     private final String letterCoordinates = "  A B C D E F G H I J";
@@ -93,5 +113,27 @@ public class Board {
         System.out.println(letterCoordinates);
         System.out.println(delimiter2);
         System.out.println(delimiter3);
+    }
+
+    // TODO: potentially dangerous
+    private void printFinalGrid(){
+        String[][] oceanBoard = npc.getGrid().getFinalGridStrings();
+        Grid grid = npc.getGrid();
+        System.out.println(titleFinalNPCGrid);
+        System.out.println(letterCoordinates);
+        System.out.println(delimiter1);
+        for (Integer i=0; i<oceanBoard.length; i++)
+        {
+            String line = i.toString();
+            for (Integer j = 0; j<oceanBoard[i].length; j++)
+            {
+                line += "|" + oceanBoard[i][j];
+            }
+            line += "|" + i.toString();
+            System.out.println(line);
+        }
+        System.out.println(delimiter1);
+        System.out.println(letterCoordinates);
+        System.out.println(delimiter2);
     }
 }

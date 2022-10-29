@@ -13,7 +13,11 @@ public class Block
     public void setHit()
     {
         aHit = true;
-        if (aShip.equals(ShipFactory.getShip("Null"))){return;}
+        if (aShip.equals(ShipFactory.getShip("Null"))){
+            System.out.println("Shot missed!");
+            return;
+        }
+        System.out.println("A ship was hit!");
         aShip.setHit();
     }
 
@@ -28,6 +32,11 @@ public class Block
         if (!aShip.equals(ShipFactory.getShip("Null")) && aHit && aShip.hasSunk()){return Character.toString(aShip.toString().charAt(0));}
         if (!aShip.equals(ShipFactory.getShip("Null")) && aHit){return "X";}
         if (aHit){return "o";}
+        return " ";
+    }
+
+    public String toStringFinal() {
+        if (!aShip.equals(ShipFactory.getShip("Null"))){return Character.toString(aShip.toString().charAt(0));}
         return " ";
     }
 
