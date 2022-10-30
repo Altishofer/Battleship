@@ -2,11 +2,9 @@ package player;
 
 import fleet.Ship;
 import fleet.ShipFactory;
-import ui.Grid;
 import ui.GridUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,13 +19,6 @@ public class User extends Player
         System.out.println("- type as many coordinates as asked by the system\n");
         setFleet();
     }
-
-    public boolean beenShot(int[] shot){return aGrid.beenShot(shot);}
-    public void setHit(int[] shot){aGrid.setHit(shot);}
-
-    public String[][] getOceanGridStrings(){return aGrid.getOceanGridStrings();}
-
-    public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
 
     // TODO: remove or adapt return of Grid for encapsulation
     //public Grid getGrid(){return aGrid;}
@@ -47,7 +38,23 @@ public class User extends Player
         configureShip(ShipFactory.getShip("Patrol Boat"), new String());
     }
 
-    private void configureShip(Ship pShip, String debug)
+    @Override
+    public int[] nextMove()
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(String.format("Type a single coordinate to shoot: "));
+        while (true)
+        {
+            String coordinate = scanner.nextLine();
+            if (ui.GridUtils.coordinatesAreValid(coordinate)){
+                return GridUtils.convertCoordinates(coordinate);
+            }
+            System.out.println(String.format("The given coordinate (%s) is not valid, try again!", coordinate));
+        }
+    }
+
+    // TODO: remove debug
+    protected void configureShip(Ship pShip, String debug)
     {
         Scanner scanner = new Scanner(System.in);
         System.out.print(String.format("Set up %s by typing %d valid coordinates: ", pShip.toString(), pShip.getSize()));
@@ -64,6 +71,7 @@ public class User extends Player
             else {
                 line = debug;
             }
+
             if (line != null && !line.isEmpty())
             {
                 line = line.replaceAll("\\s+","");
@@ -103,27 +111,6 @@ public class User extends Player
                 return;
             }
             System.out.println("Please try again");
-        }
-    }
-
-    @Override
-    public boolean defeated()
-    {
-        return aFleet.defeated();
-    }
-
-    @Override
-    public int[] nextMove()
-    {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print(String.format("Type a single coordinate to shoot: "));
-        while (true)
-        {
-            String coordinate = scanner.nextLine();
-            if (ui.GridUtils.coordinatesAreValid(coordinate)){
-                return GridUtils.convertCoordinates(coordinate);
-            }
-            System.out.println(String.format("The given coordinate (%s) is not valid, try again!", coordinate));
         }
     }
 }

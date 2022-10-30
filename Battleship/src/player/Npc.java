@@ -1,11 +1,8 @@
 package player;
 
 import fleet.ShipFactory;
-import ui.Grid;
-
 import fleet.Ship;
 import ui.GridUtils;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -17,14 +14,6 @@ public class Npc extends Player
         setFleet();
     }
 
-    public boolean beenShot(int[] shot){return aGrid.beenShot(shot);}
-    public void setHit(int[] shot){aGrid.setHit(shot);}
-
-    public String[][] getOceanGridStrings(){return aGrid.getOceanGridStrings();}
-
-    public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
-
-    public String[][] getFinalGridStrings(){return aGrid.getFinalGridStrings();}
     @Override
     public int[] nextMove()
     {
@@ -47,13 +36,8 @@ public class Npc extends Player
         for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
     }
 
-    @Override
-    public boolean defeated()
-    {
-        return aFleet.defeated();
-    }
-    
-    private void configureShip(Ship pShip) {
+    // TODO: remove debug
+    protected void configureShip(Ship pShip) {
         while (true){
             ArrayList<String> coordinates = getCoordinates(pShip.getSize());
             boolean allGood = true;

@@ -5,11 +5,9 @@ import fleet.ShipFactory;
 public class Block
 {
     private boolean aHit = false;
-    // TODO: replace null with anonymous class
-    // TODO: check if final possible
+
     private fleet.Ship aShip = ShipFactory.getShip("Null");
 
-    // TODO: check if needs boolean
     public void setHit()
     {
         aHit = true;
@@ -45,9 +43,4 @@ public class Block
     public boolean gotHit(){return aHit;}
 
     public void setShip(fleet.Ship pShip){aShip = pShip;}
-    public boolean hasSunk()
-    {
-        if (!aShip.equals(ShipFactory.getShip("Null"))){return false;}
-        return aShip.hasSunk();
-    }
 }

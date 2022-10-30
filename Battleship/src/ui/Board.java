@@ -66,7 +66,7 @@ public class Board {
         };
     }
     private final String titleFinalNPCGrid = "===== NPC GRID =====";
-    private final String titleOceanGrid = "===== OCEAN GRID =====";
+    private final String titleOceanGrid = "===== OCEAN  GRID =====";
     private final String titleTargetGrid = "===== TARGET GRID =====";
     private final String letterCoordinates = "  A B C D E F G H I J";
     private final String delimiter2 = "=======================";
@@ -74,58 +74,31 @@ public class Board {
     private final String delimiter1 = " +-+-+-+-+-+-+-+-+-+-+";
 
     public void printOceanGrid(){
-        String[][] oceanBoard = user.getOceanGridStrings();
-        System.out.println(titleOceanGrid);
-        System.out.println(letterCoordinates);
-        System.out.println(delimiter1);
-        for (Integer i=0; i<oceanBoard.length; i++)
-        {
-            String line = i.toString();
-            for (Integer j = 0; j<oceanBoard[i].length; j++)
-            {
-                line += "|" + oceanBoard[i][j];
-            }
-            line += "|" + i.toString();
-            System.out.println(line);
-        }
-        System.out.println(delimiter1);
-        System.out.println(letterCoordinates);
-        System.out.println(delimiter2);
+        String[][] oceanGrid = user.getOceanGridStrings();
+        printGrid(oceanGrid, new String(), titleOceanGrid);
     }
 
     public void printTargetGrid(){
-        String[][] oceanBoard = npc.getTargetGridStrings();
-        System.out.println(titleTargetGrid);
-        System.out.println(letterCoordinates);
-        System.out.println(delimiter1);
-        for (Integer i=0; i<oceanBoard.length; i++)
-        {
-            String line = i.toString();
-            for (Integer j = 0; j<oceanBoard[i].length; j++)
-            {
-                line += "|" + oceanBoard[i][j];
-            }
-            line += "|" + i.toString();
-            System.out.println(line);
-        }
-        System.out.println(delimiter1);
-        System.out.println(letterCoordinates);
-        System.out.println(delimiter2);
-        System.out.println(delimiter3);
+        String[][] targetGrid = npc.getTargetGridStrings();
+        printGrid(targetGrid, delimiter3, titleTargetGrid);
     }
 
-    // TODO: potentially dangerous
     private void printFinalGrid(){
-        String[][] oceanBoard = npc.getFinalGridStrings();
-        System.out.println(titleFinalNPCGrid);
+        String[][] targetGrid = npc.getFinalGridStrings();
+        printGrid(targetGrid, delimiter2, titleFinalNPCGrid);
+    }
+
+    private void printGrid(String[][] board, String delimiter, String title)
+    {
+        System.out.println(title);
         System.out.println(letterCoordinates);
         System.out.println(delimiter1);
-        for (Integer i=0; i<oceanBoard.length; i++)
+        for (Integer i=0; i<board.length; i++)
         {
             String line = i.toString();
-            for (Integer j = 0; j<oceanBoard[i].length; j++)
+            for (Integer j = 0; j<board[i].length; j++)
             {
-                line += "|" + oceanBoard[i][j];
+                line += "|" + board[i][j];
             }
             line += "|" + i.toString();
             System.out.println(line);
@@ -133,5 +106,6 @@ public class Board {
         System.out.println(delimiter1);
         System.out.println(letterCoordinates);
         System.out.println(delimiter2);
+        System.out.println(delimiter);
     }
 }

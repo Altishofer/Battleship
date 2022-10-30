@@ -10,12 +10,16 @@ public abstract class Player
 
     public abstract int[] nextMove();
     public abstract void setFleet();
-    public abstract boolean defeated();
+    public boolean defeated()
+    {
+        return aFleet.defeated();
+    }
+    public boolean beenShot(int[] shot){return aGrid.beenShot(shot);}
+    public void setHit(int[] shot){aGrid.setHit(shot);}
+    public String[][] getOceanGridStrings(){return aGrid.getOceanGridStrings();}
+    public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
+    public String[][] getFinalGridStrings(){return aGrid.getFinalGridStrings();}
 
-    public abstract boolean beenShot(int[] shot);
-    public abstract void setHit(int[] shot);
-
-    public abstract String[][] getOceanGridStrings();
-
-    public abstract String[][] getTargetGridStrings();
+    // TODO: remove debug features
+    //protected abstract void configureShip(fleet.Ship ship);
 }

@@ -23,7 +23,11 @@ public abstract class GridUtils
 
     public static boolean coordinatesAreValid(String coordinate)
     {
-        if (coordinate.length() != 2 || !isNumeric(coordinate.charAt(1)) || isNumeric(coordinate.charAt(0))){return false;}
+        if (
+                coordinate.length() != 2 ||
+                !isNumeric(coordinate.charAt(1)) ||
+                isNumeric(coordinate.charAt(0))
+        ){return false;}
         int[] convCoor = convertCoordinates(coordinate);
         if (convCoor[0] > 9 || convCoor[1] > 9){return false;}
         return true;

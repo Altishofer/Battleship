@@ -21,6 +21,7 @@ public class Grid {
         }
         aFleet = new Fleet();
     }
+
     public String[][] getOceanGridStrings(){
         String[][] copyGrid = new String[10][10];
         for (int i = 0; i < aGrid.length; i++)
@@ -97,6 +98,7 @@ public class Grid {
         return true;
     }
 
+    // TODO: delet if not used, else replace
     private boolean allInputCorrect(ArrayList<String> coordinates)
     {
         for (String coor : coordinates)

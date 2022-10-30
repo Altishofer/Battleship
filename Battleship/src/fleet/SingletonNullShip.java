@@ -12,7 +12,7 @@ public class SingletonNullShip extends Ship {
 
     public static SingletonNullShip getInstance() {return INSTANCE;}
     @Override
-    public  int getSize(){return 0;}
+    public int getSize(){return 0;}
 
     @Override
     public  String toString() {return "Null";}

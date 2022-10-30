@@ -16,21 +16,22 @@ public class Ship
         aSize = pSize;
         isNull = pIsNull;
     }
-    //TODO: removed final to be able to override
+
     public int getSize(){return aSize;}
-    //TODO: removed final to be able to override
+
     public String toString() {return aType;}
-    //TODO: removed final to be able to override
+
     public void setHit() {
         aSize -= 1;
         if(aSize<=0){
             System.out.println("A "+aType+" sunk!");
         }
     }
-    //TODO: removed final to be able to override
+
     public boolean hasSunk(){return aSize <= 0;}
 
-    public boolean istNullShip(){return aType == "Null";}
+    public boolean istNullShip(){return isNull;}
+
     public  ArrayList<int[]> getCoordinates()
     {
         ArrayList<int[]> copy = new ArrayList<int[]>();
