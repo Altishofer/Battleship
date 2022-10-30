@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 public class Fleet
 {
-    private ArrayList<Ship> aFleet = new ArrayList<Ship>();
+    private ArrayList<Ship> aShips = new ArrayList<Ship>();
 
-    public void addShip(Ship pShip){aFleet.add(pShip);}
+    public void addShip(Ship pShip){
+        aShips.add(pShip);}
 
     public boolean defeated(){
-        for (Ship ship : aFleet)
+        for (Ship ship : aShips)
         {
             if (!ship.hasSunk()){return false;}
         }

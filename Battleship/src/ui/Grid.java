@@ -7,28 +7,26 @@ import fleet.Ship;
 import java.util.ArrayList;
 
 public class Grid {
-    private final Block[][] aGrid = new Block[10][10];
-    private final fleet.Fleet aFleet;
+    private final Block[][] aBlocks = new Block[10][10];
 
     public Grid ()
     {
-        for (int i = 0; i < aGrid.length; i++)
+        for (int i = 0; i < aBlocks.length; i++)
         {
-            for (int j = 0; j < aGrid[i].length; j++)
+            for (int j = 0; j < aBlocks[i].length; j++)
             {
-                aGrid[i][j] = new Block();
+                aBlocks[i][j] = new Block();
             }
         }
-        aFleet = new Fleet();
     }
 
     public String[][] getOceanGridStrings(){
         String[][] copyGrid = new String[10][10];
-        for (int i = 0; i < aGrid.length; i++)
+        for (int i = 0; i < aBlocks.length; i++)
         {
-            for (int j = 0; j < aGrid[i].length; j++)
+            for (int j = 0; j < aBlocks[i].length; j++)
             {
-                copyGrid[i][j] = aGrid[i][j].toStringOcean();
+                copyGrid[i][j] = aBlocks[i][j].toStringOcean();
             }
         }
         return copyGrid;
@@ -36,11 +34,11 @@ public class Grid {
 
     public String[][] getFinalGridStrings(){
         String[][] copyGrid = new String[10][10];
-        for (int i = 0; i < aGrid.length; i++)
+        for (int i = 0; i < aBlocks.length; i++)
         {
-            for (int j = 0; j < aGrid[i].length; j++)
+            for (int j = 0; j < aBlocks[i].length; j++)
             {
-                copyGrid[i][j] = aGrid[i][j].toStringFinal();
+                copyGrid[i][j] = aBlocks[i][j].toStringFinal();
             }
         }
         return copyGrid;
@@ -49,11 +47,11 @@ public class Grid {
     public String[][] getTargetGridStrings(){
         String[][] copyGrid = new String[10][10];
 
-        for (int i = 0; i < aGrid.length; i++)
+        for (int i = 0; i < aBlocks.length; i++)
         {
-            for (int j = 0; j < aGrid[i].length; j++)
+            for (int j = 0; j < aBlocks[i].length; j++)
             {
-                copyGrid[i][j] = aGrid[i][j].toStringTarget();
+                copyGrid[i][j] = aBlocks[i][j].toStringTarget();
             }
         }
         return copyGrid;
@@ -76,17 +74,17 @@ public class Grid {
 
     private Block getBlock(int[] pCoordinate)
     {
-        return aGrid[pCoordinate[0]][pCoordinate[1]];
+        return aBlocks[pCoordinate[0]][pCoordinate[1]];
     }
 
     public boolean isFree(int[] pCoordinate)
     {
-        return !aGrid[pCoordinate[0]][pCoordinate[1]].hasShip();
+        return !aBlocks[pCoordinate[0]][pCoordinate[1]].hasShip();
     }
 
     public boolean beenShot(int[] pCoordinate)
     {
-        return aGrid[pCoordinate[0]][pCoordinate[1]].gotHit();
+        return aBlocks[pCoordinate[0]][pCoordinate[1]].gotHit();
     }
 
     public boolean isFree(ArrayList<int[]> coordinates)

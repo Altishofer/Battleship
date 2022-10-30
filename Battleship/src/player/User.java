@@ -20,9 +20,6 @@ public class User extends Player
         setFleet();
     }
 
-    // TODO: remove or adapt return of Grid for encapsulation
-    //public Grid getGrid(){return aGrid;}
-
     @Override
     public void setFleet()
     {
