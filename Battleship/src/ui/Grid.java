@@ -108,6 +108,7 @@ public class Grid {
         if (!coordinatesFormLine(coordinates)) {return false;}
         return true;
     }
+
     private boolean coordinatesFormLine(ArrayList<String> coordinates){
         //TODO: check if all coordinates are without gaps between them
         String row =  String.valueOf(coordinates.get(0).charAt(0));
