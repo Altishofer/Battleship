@@ -2,6 +2,7 @@ package player;
 
 import fleet.Ship;
 import fleet.ShipFactory;
+import fleet.ShipType;
 import ui.GridUtils;
 
 import java.util.ArrayList;
@@ -24,15 +25,15 @@ public class User extends Player
     public void setFleet()
     {
         /*
-        configureShip(ShipFactory.getShip("Carrier"));
-        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip("Battleship");}
-        for (int i=0; i<3; i++){configureShip(ShipFactory.getShip("Submarine"));}
-        for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
+        configureShip(ShipFactory.getShip(ShipType.CARRIER));
+        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip(ShipType.BATTLESHIP);}
+        for (int i=0; i<3; i++){configureShip(ShipFactory.getShip(ShipType.SUBMARINE));}
+        for (int i=0; i<4; i++){configureShip(ShipFactory.getShip(ShipType.PATROLBOAT));}
         */
-        configureShip(ShipFactory.getShip("Carrier"), "A0,B0,C0,D0,E0,F0");
-        configureShip(ShipFactory.getShip("Battleship"), "A1,B1,C1,D1");
-        configureShip(ShipFactory.getShip("Submarine"), "A2,B2,C2");
-        configureShip(ShipFactory.getShip("Patrol Boat"), new String());
+        configureShip(ShipFactory.getShip(ShipType.CARRIER), "A0,B0,C0,D0,E0,F0");
+        configureShip(ShipFactory.getShip(ShipType.BATTLESHIP), "A1,B1,C1,D1");
+        configureShip(ShipFactory.getShip(ShipType.SUBMARINE), "A2,B2,C2");
+        configureShip(ShipFactory.getShip(ShipType.PATROLBOAT), new String());
     }
 
     @Override

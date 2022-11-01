@@ -2,6 +2,7 @@ package player;
 
 import fleet.ShipFactory;
 import fleet.Ship;
+import fleet.ShipType;
 import ui.GridUtils;
 import java.util.ArrayList;
 import java.util.Random;
@@ -30,10 +31,10 @@ public class Npc extends Player
     @Override
     public void setFleet()
     {
-        configureShip(ShipFactory.getShip("Carrier"));
-        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip("Battleship"));}
-        for (int i=0; i<3; i++){configureShip(ShipFactory.getShip("Submarine"));}
-        for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
+        configureShip(ShipFactory.getShip(ShipType.CARRIER));
+        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip(ShipType.BATTLESHIP));}
+        for (int i=0; i<3; i++){configureShip(ShipFactory.getShip(ShipType.SUBMARINE));}
+        for (int i=0; i<4; i++){configureShip(ShipFactory.getShip(ShipType.PATROLBOAT));}
     }
 
     // TODO: remove debug
