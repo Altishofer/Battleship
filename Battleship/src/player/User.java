@@ -13,7 +13,7 @@ public class User extends Player
     public User()
     {
         super();
-        System.out.println("define your fleet by following rules");
+        System.out.println("define your fleet by the following rules");
         System.out.println("- type the coordinates seperated by commas");
         System.out.println("- all coordinates need form a line (vertical or horizontal)");
         System.out.println("- type as many coordinates as asked by the system\n");
@@ -23,16 +23,15 @@ public class User extends Player
     @Override
     public void setFleet()
     {
-        /*
         configureShip(ShipFactory.getShip("Carrier"));
-        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip("Battleship");}
+        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip("Battleship"));}
         for (int i=0; i<3; i++){configureShip(ShipFactory.getShip("Submarine"));}
         for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
-        */
-        configureShip(ShipFactory.getShip("Carrier"), "A0,B0,C0,D0,E0,F0");
-        configureShip(ShipFactory.getShip("Battleship"), "A1,B1,C1,D1");
-        configureShip(ShipFactory.getShip("Submarine"), "A2,B2,C2");
-        configureShip(ShipFactory.getShip("Patrol Boat"), new String());
+
+        /*configureShip(ShipFactory.getShip("Carrier"), "A0,F0");
+        configureShip(ShipFactory.getShip("Submarine"), "A2,C2");
+        configureShip(ShipFactory.getShip("Patrol Boat"), "A1,B1");
+        configureShip(ShipFactory.getShip("Battleship"), new String());*/
     }
 
     @Override
@@ -43,31 +42,34 @@ public class User extends Player
         while (true)
         {
             String coordinate = scanner.nextLine();
-            if (ui.GridUtils.coordinatesAreValid(coordinate)){
-                return GridUtils.convertCoordinates(coordinate);
+            if (ui.GridUtils.coordinatesAreValidString(coordinate)){
+                int[] xyCoordinate = GridUtils.convertCoordinates(coordinate);
+                return xyCoordinate;
             }
             System.out.println(String.format("The given coordinate (%s) is not valid, try again!", coordinate));
         }
     }
 
-    // TODO: remove debug
-    protected void configureShip(Ship pShip, String debug)
+    protected void configureShip(Ship pShip)
     {
         Scanner scanner = new Scanner(System.in);
-        System.out.print(String.format("Set up %s by typing %d valid coordinates: ", pShip.toString(), pShip.getSize()));
+        System.out.print(String.format("Set up %s with length %s by entering valid start and end coordinates of your ship: ", pShip.toString(), pShip.getSize()));
         while (true){
             String line;
             Boolean allGood = true;
             ArrayList<String> coordinates = new ArrayList<String>();
             ArrayList<int[]> xyCoordinates = new ArrayList<int[]>();
-            //TODO: remove debug features
-            if (debug.isEmpty())
+
+            /*if (debug.isEmpty())
             {
                 line = scanner.nextLine();
             }
             else {
                 line = debug;
             }
+            */
+
+            line = scanner.nextLine();
 
             if (line != null && !line.isEmpty())
             {
@@ -79,26 +81,32 @@ public class User extends Player
                 System.out.println("Given coordinates are empty!");
                 allGood = false;
             }
-            if (allGood && !ui.GridUtils.coordinatesAreValid(coordinates))
+            if (allGood && !ui.GridUtils.coordinatesAreValidString(coordinates))
             {
                 System.out.println("Coordinates are not valid!");
                 allGood = false;
             }
-            if (allGood && coordinates.size() != pShip.getSize())
+            if (allGood) {
+                xyCoordinates = ui.GridUtils.convertCoordinates(coordinates);
+            }
+            if (allGood && !ui.GridUtils.coordinatesInLine(xyCoordinates))
             {
-                System.out.println("Number of coordinates is not correct!");
+                System.out.println("Coordinates are not in a horizontal or vertical line!");
                 allGood = false;
             }
-            if (allGood)
+            if (allGood) {
+                ui.GridUtils.getConsecutiveCoordinates(xyCoordinates);
+            }
+            if (allGood && xyCoordinates.size() != pShip.getSize())
             {
-                xyCoordinates = GridUtils.convertCoordinates(coordinates);
+                System.out.println(String.format("Coordinates do not match length %s of %s!", pShip.getSize(), pShip.toString()));
+                allGood = false;
             }
             if (allGood && !aGrid.isFree(xyCoordinates))
             {
                 System.out.println("Some coordinates are already occupied!");
                 allGood = false;
             }
-            // TODO: check if all coordinates (see in GridUtils) next to each other
             if(allGood)
             {
                 pShip.setCoordinates(xyCoordinates);

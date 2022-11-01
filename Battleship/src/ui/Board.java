@@ -65,7 +65,7 @@ public class Board {
             // Is this ok?
         };
     }
-    private final String titleFinalNPCGrid = "===== NPC GRID =====";
+    private final String titleFinalNPCGrid = "=====  NPC  GRID  =====";
     private final String titleOceanGrid = "===== OCEAN  GRID =====";
     private final String titleTargetGrid = "===== TARGET GRID =====";
     private final String letterCoordinates = "  A B C D E F G H I J";

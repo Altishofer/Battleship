@@ -2,7 +2,7 @@ package player;
 
 import fleet.ShipFactory;
 import fleet.Ship;
-import ui.GridUtils;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -36,60 +36,62 @@ public class Npc extends Player
         for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
     }
 
-    // TODO: remove debug
     protected void configureShip(Ship pShip) {
         while (true){
-            ArrayList<String> coordinates = getCoordinates(pShip.getSize());
+            ArrayList<int[]> xyCoordinates = getCoordinates(pShip.getSize());
             boolean allGood = true;
-            if (!ui.GridUtils.coordinatesAreValid(coordinates))
+            if (!ui.GridUtils.coordinatesAreValidInt(xyCoordinates))
             {
                 allGood = false;
             }
-            if (allGood && coordinates.size() != pShip.getSize())
+            if (allGood && !ui.GridUtils.coordinatesInLine(xyCoordinates))
             {
                 allGood = false;
             }
-            ArrayList<int[]> xyCoordinates = GridUtils.convertCoordinates(coordinates);
+            if (allGood) {
+                ui.GridUtils.getConsecutiveCoordinates(xyCoordinates);
+            }
+            if (allGood && xyCoordinates.size() != pShip.getSize())
+            {
+                allGood = false;
+            }
             if (allGood && !aGrid.isFree(xyCoordinates))
             {
                 allGood = false;
             }
-            // TODO: check if all coordinates in line (see in GridUtils) and next to each other
             if(allGood)
             {
                 pShip.setCoordinates(xyCoordinates);
                 aFleet.addShip(pShip);
                 aGrid.setShip(pShip);
-                System.out.println(String.format("NPC successfully placed %s\n", pShip.toString()));
+                System.out.println(String.format("NPC placed a %s\n", pShip.toString()));
                 return;
             }
         }
     }
 
-    private ArrayList<String> getCoordinates(int shipSize){
+    private ArrayList<int[]> getCoordinates(int shipSize){
         Random rand = new Random();
-        ArrayList<String> placement = new ArrayList<>();
         boolean direction = rand.nextBoolean();
-        final String upper = "ABCDEFGHIJ";
 
         if(direction) {
-            String letter = Character.toString(upper.charAt(rand.nextInt(9)));
-            int randNum = rand.nextInt(10 - (shipSize-1));
-            for(int i = 0; i < shipSize; i++){
-                String number = Integer.toString(randNum + i);
-                String coordinates = letter + number;
-                placement.add(coordinates);
-            }
-        } else {
-            String number = Integer.toString(rand.nextInt(10));
-            int randNum = rand.nextInt(9 - (shipSize-1));
-            for(int i = 0; i < shipSize; i++){
-                String letter = Character.toString(upper.charAt(randNum + i));
-                String coordinates = letter + number;
-                placement.add(coordinates);
-            }
+            int xCoor = rand.nextInt(10);
+            int yCoor = rand.nextInt(10 - (shipSize-1));
+            int[] startPoint = new int[] {xCoor, yCoor};
+            int[] endPoint = new int[] {xCoor, yCoor + shipSize-1};
+            ArrayList<int[]> placement = new ArrayList<int[]>();
+            placement.add(startPoint);
+            placement.add(endPoint);
+            return placement;
         }
 
+        int xCoor = rand.nextInt(10 - (shipSize-1));
+        int yCoor = rand.nextInt(10);
+        int[] startPoint = new int[] {xCoor, yCoor};
+        int[] endPoint = new int[] {xCoor + shipSize-1, yCoor};
+        ArrayList<int[]> placement = new ArrayList<int[]>();
+        placement.add(startPoint);
+        placement.add(endPoint);
         return placement;
     }
 }

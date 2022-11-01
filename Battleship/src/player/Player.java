@@ -20,6 +20,5 @@ public abstract class Player
     public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
     public String[][] getFinalGridStrings(){return aGrid.getFinalGridStrings();}
 
-    // TODO: remove debug features
     //protected abstract void configureShip(fleet.Ship ship);
 }

@@ -1,7 +1,6 @@
 package ui;
 
 import block.Block;
-import fleet.Fleet;
 import fleet.Ship;
 
 import java.util.ArrayList;
@@ -96,36 +95,18 @@ public class Grid {
         return true;
     }
 
-    // TODO: delet if not used, else replace
+    //TODO: Check if function is needed
     private boolean allInputCorrect(ArrayList<String> coordinates)
     {
-        for (String coor : coordinates)
+        ArrayList<int[]> xyCoordinates = new ArrayList<int[]>();
+        xyCoordinates = ui.GridUtils.convertCoordinates(coordinates);
+        for (int[] coor : xyCoordinates)
         {
-            if (!GridUtils.coordinatesAreValid(coor)){return false;}
+            if (!GridUtils.coordinatesAreValidInt(coor)){return false;}
         }
-        ArrayList<int[]> yxCoordinates = GridUtils.convertCoordinates(coordinates);
-        if (!coordinatesAreFree(yxCoordinates)){return false;}
-        if (!coordinatesFormLine(coordinates)) {return false;}
+        if (!coordinatesAreFree(xyCoordinates)){return false;}
+        if (!GridUtils.coordinatesInLine(xyCoordinates)) {return false;}
         return true;
-    }
-    private boolean coordinatesFormLine(ArrayList<String> coordinates){
-        //TODO: check if all coordinates are without gaps between them
-        String row =  String.valueOf(coordinates.get(0).charAt(0));
-        String column = String.valueOf(coordinates.get(0).charAt(1));
-        boolean allInLine = true;
-        boolean allInRow = true;
-        for (String coor : coordinates)
-        {
-            if (!coor.startsWith(row))
-            {
-                allInLine = false;
-            }
-            if (!coor.startsWith(column))
-            {
-                allInRow = false;
-            }
-        }
-        return allInLine || allInRow;
     }
 
     private boolean coordinatesAreFree(ArrayList<int[]> coordinates){
