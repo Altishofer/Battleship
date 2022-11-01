@@ -7,19 +7,19 @@ public abstract class ShipFactory
         if (pType == null){return null;}
         if (pType.equalsIgnoreCase("Battleship"))
         {
-            return new Ship("Battleship", 4, false);
+            return new Ship(ShipType.BATTLESHIP, false);
         }
         if (pType.equalsIgnoreCase("Carrier"))
         {
-            return new Ship("Carrier", 6, false);
+            return new Ship(ShipType.CARRIER, false);
         }
         if (pType.equalsIgnoreCase("Patrol Boat"))
         {
-            return new Ship("Patrol Boat", 2, false);
+            return new Ship(ShipType.PATROLBOAT, false);
         }
         if (pType.equalsIgnoreCase("Submarine"))
         {
-            return new Ship("Submarine", 3, false);
+            return new Ship(ShipType.SUBMARINE, false);
         }
         if (pType.equalsIgnoreCase("Null"))
         {

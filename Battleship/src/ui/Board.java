@@ -30,7 +30,8 @@ public class Board {
         try{
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e){
-            // Is this ok?
+            System.out.println("Please do not interrupt!");
+            // TODO: Is this ok?
         };
         while (true) {
             int[] shot = npc.nextMove();
@@ -42,7 +43,8 @@ public class Board {
         try{
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e){
-            // Is this ok?
+            System.out.println("Please do not interrupt!");
+            // TODO: Is this ok?
         };
     }
 
@@ -62,7 +64,8 @@ public class Board {
         try{
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e){
-            // Is this ok?
+            System.out.println("Please do not interrupt!");
+            // TODO: Is this ok?
         };
     }
     private final String titleFinalNPCGrid = "===== NPC GRID =====";

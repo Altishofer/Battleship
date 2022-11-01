@@ -5,26 +5,26 @@ import java.util.ArrayList;
 public class Ship
 {
     protected ArrayList<int[]> aCoordinates = new ArrayList<int[]>();
-    protected final String aType;
+    protected final ShipType aType;
     protected int aSize;
 
     private boolean isNull;
 
-    public Ship(String pType, int pSize, boolean pIsNull)
+    public Ship(ShipType pType, boolean pIsNull)
     {
         aType = pType;
-        aSize = pSize;
+        aSize = pType.size;
         isNull = pIsNull;
     }
 
     public int getSize(){return aSize;}
 
-    public String toString() {return aType;}
+    public String toString() {return aType.toString();}
 
     public void setHit() {
         aSize -= 1;
         if(aSize<=0){
-            System.out.println("A "+aType+" sunk!");
+            System.out.println("A "+aType.toString()+" sunk!");
         }
     }
 
