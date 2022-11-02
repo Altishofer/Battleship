@@ -1,22 +1,21 @@
-
 import ui.Board;
 
 public class Main
 {
-    private static final Board board = new Board();
+    private final static Board BOARD = new Board();
     public static void main(String[] args)
     {
         while(true)
         {
-            board.printTargetGrid();
-            board.printOceanGrid();
-            if (board.gameIsOver()){break;}
-            board.userMove();
+            BOARD.printTargetGrid();
+            BOARD.printOceanGrid();
+            if (BOARD.gameIsOver()){break;}
+            BOARD.userMove();
 
-            board.printTargetGrid();
-            board.printOceanGrid();
-            if (board.gameIsOver()){break;}
-            board.npcMove();
+            BOARD.printTargetGrid();
+            BOARD.printOceanGrid();
+            if (BOARD.gameIsOver()){break;}
+            BOARD.npcMove();
         }
     }
 }

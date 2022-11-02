@@ -11,7 +11,6 @@ public class Npc extends Player
 {
     public Npc()
     {
-        super();
         setFleet();
     }
 
@@ -74,11 +73,12 @@ public class Npc extends Player
         Random rand = new Random();
         boolean direction = rand.nextBoolean();
 
-        if(direction) {
+        if(direction)
+        {
             int xCoor = rand.nextInt(10);
-            int yCoor = rand.nextInt(10 - (shipSize-1));
-            int[] startPoint = new int[] {xCoor, yCoor};
-            int[] endPoint = new int[] {xCoor, yCoor + shipSize-1};
+            int yCoor = rand.nextInt(10 - (shipSize - 1));
+            int[] startPoint = new int[]{xCoor, yCoor};
+            int[] endPoint = new int[]{xCoor, yCoor + shipSize - 1};
             ArrayList<int[]> placement = new ArrayList<int[]>();
             placement.add(startPoint);
             placement.add(endPoint);

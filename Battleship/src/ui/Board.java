@@ -4,7 +4,8 @@ import player.Npc;
 import player.User;
 import java.util.concurrent.TimeUnit;
 
-public class Board {
+public class Board
+{
     private User user = new User();
     private Npc npc = new Npc();
 
@@ -66,19 +67,20 @@ public class Board {
         GridUtils.printGrid(targetGrid, GridUtils.DELIMITER_3, GridUtils.TITLE_TARGET_GRID);
     }
 
+    public static void waitToDisplay(int seconds)
+    {
+        try
+        {
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e)
+        {
+            System.out.println("Please do not interrupt!");
+        }
+    }
+
     private void printFinalGrid()
     {
         String[][] targetGrid = npc.getOceanGridStrings();
         GridUtils.printGrid(targetGrid, GridUtils.DELIMITER_2, GridUtils.TITLE_FINAL_NPC_GRID);
-    }
-
-    public static void waitToDisplay(int seconds)
-    {
-        try{
-            TimeUnit.SECONDS.sleep(seconds);
-        } catch (InterruptedException e){
-            System.out.println("Please do not interrupt!");
-            // TODO: Is this ok?
-        };
     }
 }
