@@ -8,11 +8,10 @@ public class Ship
     protected final ShipType aType;
     protected int aSize;
     private boolean isNull;
-    public Ship(ShipType pType, boolean pIsNull)
+    public Ship(ShipType pType)
     {
         aType = pType;
         aSize = pType.size;
-        isNull = pIsNull;
     }
     public int getSize(){return aSize;}
     public String toString() {return aType.toString();}
@@ -24,8 +23,6 @@ public class Ship
     }
 
     public boolean hasSunk(){return aSize <= 0;}
-
-    public boolean istNullShip(){return isNull;}
 
     public  ArrayList<int[]> getCoordinates()
     {
