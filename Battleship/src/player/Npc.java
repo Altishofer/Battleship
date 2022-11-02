@@ -36,7 +36,6 @@ public class Npc extends Player
         for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
     }
 
-    // TODO: remove debug
     protected void configureShip(Ship pShip) {
         while (true){
             ArrayList<String> coordinates = getCoordinates(pShip.getSize());
@@ -54,7 +53,6 @@ public class Npc extends Player
             {
                 allGood = false;
             }
-            // TODO: check if all coordinates in line (see in GridUtils) and next to each other
             if(allGood)
             {
                 pShip.setCoordinates(xyCoordinates);

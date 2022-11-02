@@ -13,26 +13,38 @@ public class User extends Player
     public User()
     {
         super();
-        System.out.println("define your fleet by following rules");
-        System.out.println("- type the coordinates seperated by commas");
-        System.out.println("- all coordinates need form a line (vertical or horizontal)");
-        System.out.println("- type as many coordinates as asked by the system\n");
         setFleet();
     }
 
     @Override
     public void setFleet()
     {
-        /*
+        printOceanGrid();
         configureShip(ShipFactory.getShip("Carrier"));
-        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip("Battleship");}
-        for (int i=0; i<3; i++){configureShip(ShipFactory.getShip("Submarine"));}
-        for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
-        */
+
+        for (int i=0; i<2; i++)
+        {
+            printOceanGrid();
+            configureShip(ShipFactory.getShip("Battleship"));
+        }
+        for (int i=0; i<3; i++)
+        {
+            printOceanGrid();
+            configureShip(ShipFactory.getShip("Submarine"));
+        }
+        for (int i=0; i<4; i++)
+        {
+            printOceanGrid();
+            configureShip(ShipFactory.getShip("Patrol Boat"));
+        }
+
+
+        /*
         configureShip(ShipFactory.getShip("Carrier"), "A0,B0,C0,D0,E0,F0");
         configureShip(ShipFactory.getShip("Battleship"), "A1,B1,C1,D1");
         configureShip(ShipFactory.getShip("Submarine"), "A2,B2,C2");
         configureShip(ShipFactory.getShip("Patrol Boat"), new String());
+        */
     }
 
     @Override
@@ -50,8 +62,7 @@ public class User extends Player
         }
     }
 
-    // TODO: remove debug
-    protected void configureShip(Ship pShip, String debug)
+    protected void configureShip(Ship pShip)
     {
         Scanner scanner = new Scanner(System.in);
         System.out.print(String.format("Set up %s by typing %d valid coordinates: ", pShip.toString(), pShip.getSize()));
@@ -60,15 +71,7 @@ public class User extends Player
             Boolean allGood = true;
             ArrayList<String> coordinates = new ArrayList<String>();
             ArrayList<int[]> xyCoordinates = new ArrayList<int[]>();
-            //TODO: remove debug features
-            if (debug.isEmpty())
-            {
-                line = scanner.nextLine();
-            }
-            else {
-                line = debug;
-            }
-
+            line = scanner.nextLine();
             if (line != null && !line.isEmpty())
             {
                 line = line.replaceAll("\\s+","");
@@ -98,7 +101,6 @@ public class User extends Player
                 System.out.println("Some coordinates are already occupied!");
                 allGood = false;
             }
-            // TODO: check if all coordinates (see in GridUtils) next to each other
             if(allGood)
             {
                 pShip.setCoordinates(xyCoordinates);
@@ -109,5 +111,10 @@ public class User extends Player
             }
             System.out.println("Please try again");
         }
+    }
+
+    public void printOceanGrid(){
+        String[][] oceanGrid = aGrid.getOceanGridStrings();
+        GridUtils.printGrid(oceanGrid, new String(), GridUtils.TITLE_OCEAN_GRID);
     }
 }

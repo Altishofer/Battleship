@@ -55,4 +55,33 @@ public abstract class GridUtils
         }
         return res;
     }
+
+    public static final String TITLE_FINAL_NPC_GRID = "===== NPC GRID =====";
+    public static final String TITLE_OCEAN_GRID = "===== OCEAN  GRID =====";
+    public static final String TITLE_TARGET_GRID = "===== TARGET GRID =====";
+    public static final String LETTER_COORDINATES = "  A B C D E F G H I J";
+    public static final String DELIMITER_1 = " +-+-+-+-+-+-+-+-+-+-+";
+    public static final String DELIMITER_2 = "=======================";
+    public static final String DELIMITER_3 = "\n-----------------------\n";
+
+    public static void printGrid(String[][] board, String delimiter, String title)
+    {
+        System.out.println(title);
+        System.out.println(GridUtils.LETTER_COORDINATES);
+        System.out.println(GridUtils.DELIMITER_1);
+        for (Integer i=0; i<board.length; i++)
+        {
+            String line = i.toString();
+            for (Integer j = 0; j<board[i].length; j++)
+            {
+                line += "|" + board[i][j];
+            }
+            line += "|" + i.toString();
+            System.out.println(line);
+        }
+        System.out.println(GridUtils.DELIMITER_1);
+        System.out.println(GridUtils.LETTER_COORDINATES);
+        System.out.println(GridUtils.DELIMITER_2);
+        System.out.println(delimiter);
+    }
 }
