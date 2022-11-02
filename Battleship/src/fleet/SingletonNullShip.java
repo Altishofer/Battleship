@@ -7,7 +7,7 @@ public class SingletonNullShip extends Ship {
     private static SingletonNullShip INSTANCE;
 
     private SingletonNullShip() {
-        super(ShipType.NULL, true);
+        super(ShipType.NULL);
     }
 
     public static SingletonNullShip getInstance()
@@ -27,9 +27,6 @@ public class SingletonNullShip extends Ship {
 
     @Override
     public  boolean hasSunk(){return false;}
-
-    @Override
-    public boolean istNullShip(){return true;}
 
     @Override
     public ArrayList<int[]> getCoordinates()
