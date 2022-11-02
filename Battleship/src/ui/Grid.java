@@ -82,48 +82,4 @@ public class Grid {
         }
         return true;
     }
-
-    //TODO: Check if function is needed
-    private boolean allInputCorrect(ArrayList<String> coordinates)
-    {
-        ArrayList<int[]> xyCoordinates = new ArrayList<int[]>();
-        xyCoordinates = ui.GridUtils.convertCoordinates(coordinates);
-        for (int[] coor : xyCoordinates)
-        {
-            if (!GridUtils.coordinatesAreValidInt(coor)){return false;}
-        }
-        if (!coordinatesAreFree(xyCoordinates)){return false;}
-        if (!GridUtils.coordinatesInLine(xyCoordinates)) {return false;}
-        return true;
-    }
-
-    private boolean coordinatesFormLine(ArrayList<String> coordinates){
-        String row =  String.valueOf(coordinates.get(0).charAt(0));
-        String column = String.valueOf(coordinates.get(0).charAt(1));
-        boolean allInLine = true;
-        boolean allInRow = true;
-        for (String coor : coordinates)
-        {
-            if (!coor.startsWith(row))
-            {
-                allInLine = false;
-            }
-            if (!coor.startsWith(column))
-            {
-                allInRow = false;
-            }
-        }
-        return allInLine || allInRow;
-    }
-
-    private boolean coordinatesAreFree(ArrayList<int[]> coordinates){
-        for (int[] coor : coordinates)
-        {
-            if (this.isFree(coor))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
 }
