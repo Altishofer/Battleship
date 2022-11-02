@@ -40,10 +40,6 @@ public class Npc extends Player
         while (true){
             ArrayList<int[]> xyCoordinates = getCoordinates(pShip.getSize());
             boolean allGood = true;
-            if (!ui.GridUtils.coordinatesAreValidInt(xyCoordinates))
-            {
-                allGood = false;
-            }
             if (allGood && !ui.GridUtils.coordinatesInLine(xyCoordinates))
             {
                 allGood = false;
