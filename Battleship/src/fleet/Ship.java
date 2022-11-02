@@ -7,20 +7,15 @@ public class Ship
     protected ArrayList<int[]> aCoordinates = new ArrayList<int[]>();
     protected final ShipType aType;
     protected int aSize;
-
     private boolean isNull;
-
     public Ship(ShipType pType, boolean pIsNull)
     {
         aType = pType;
         aSize = pType.size;
         isNull = pIsNull;
     }
-
     public int getSize(){return aSize;}
-
     public String toString() {return aType.toString();}
-
     public void setHit() {
         aSize -= 1;
         if(aSize<=0){
