@@ -25,10 +25,10 @@ public class User extends Player
     public void setFleet()
     {
         /*
-        configureShip(ShipFactory.getShip(ShipType.CARRIER));
-        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip(ShipType.BATTLESHIP);}
-        for (int i=0; i<3; i++){configureShip(ShipFactory.getShip(ShipType.SUBMARINE));}
-        for (int i=0; i<4; i++){configureShip(ShipFactory.getShip(ShipType.PATROLBOAT));}
+        for (int i=0; i<ShipType.CARRIER.quantity; i++){ configureShip(ShipFactory.getShip(ShipType.CARRIER));}
+        for (int i=0; i<ShipType.BATTLESHIP.quantity; i++){configureShip(ShipFactory.getShip(ShipType.BATTLESHIP));}
+        for (int i=0; i<ShipType.SUBMARINE.quantity; i++){configureShip(ShipFactory.getShip(ShipType.SUBMARINE));}
+        for (int i=0; i<ShipType.PATROLBOAT.quantity; i++){configureShip(ShipFactory.getShip(ShipType.PATROLBOAT));}
         */
         configureShip(ShipFactory.getShip(ShipType.CARRIER), "A0,B0,C0,D0,E0,F0");
         configureShip(ShipFactory.getShip(ShipType.BATTLESHIP), "A1,B1,C1,D1");
