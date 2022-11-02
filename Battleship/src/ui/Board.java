@@ -27,11 +27,7 @@ public class Board {
     public void npcMove()
     {
         System.out.println("NPC is playing...");
-        try{
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e){
-            // Is this ok?
-        };
+        waitToDisplay(2);
         while (true) {
             int[] shot = npc.nextMove();
             if (!user.beenShot(shot)) {
@@ -39,11 +35,7 @@ public class Board {
                 break;
             }
         }
-        try{
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e){
-            // Is this ok?
-        };
+        waitToDisplay(2);
     }
 
     public void userMove()
@@ -59,11 +51,7 @@ public class Board {
             }
             System.out.println("The given coordinate has already been shot, try again!");
         }
-        try{
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e){
-            // Is this ok?
-        };
+        waitToDisplay(2);
     }
 
     public void printOceanGrid(){
@@ -79,5 +67,14 @@ public class Board {
     private void printFinalGrid(){
         String[][] targetGrid = npc.getFinalGridStrings();
         GridUtils.printGrid(targetGrid, GridUtils.DELIMITER_2, GridUtils.TITLE_FINAL_NPC_GRID);
+    }
+
+    public static void waitToDisplay(int seconds){
+        try{
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e){
+            System.out.println("Please do not interrupt!");
+            // TODO: Is this ok?
+        };
     }
 }

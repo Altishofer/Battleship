@@ -2,6 +2,7 @@ package player;
 
 import fleet.Ship;
 import fleet.ShipFactory;
+import fleet.ShipType;
 import ui.GridUtils;
 
 import java.util.ArrayList;
@@ -20,21 +21,18 @@ public class User extends Player
     public void setFleet()
     {
         printOceanGrid();
-        configureShip(ShipFactory.getShip("Carrier"));
-        for (int i=0; i<2; i++)
-        {
+        configureShip(ShipFactory.getShip(ShipType.CARRIER));
+        for (int i = 0; i < 2; i++) {
             printOceanGrid();
-            configureShip(ShipFactory.getShip("Battleship"));
+            configureShip(ShipFactory.getShip(ShipType.BATTLESHIP));
         }
-        for (int i=0; i<3; i++)
-        {
+        for (int i = 0; i < 3; i++) {
             printOceanGrid();
-            configureShip(ShipFactory.getShip("Submarine"));
+            configureShip(ShipFactory.getShip(ShipType.SUBMARINE));
         }
-        for (int i=0; i<4; i++)
-        {
+        for (int i = 0; i < 4; i++) {
             printOceanGrid();
-            configureShip(ShipFactory.getShip("Patrol Boat"));
+            configureShip(ShipFactory.getShip(ShipType.PATROLBOAT));
         }
     }
 
