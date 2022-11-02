@@ -10,7 +10,7 @@ public class SingletonNullShip extends Ship {
         super(ShipType.NULL);
     }
 
-    public static SingletonNullShip getInstance()
+    public static synchronized SingletonNullShip getInstance()
     {
         if (INSTANCE == null)
         {
