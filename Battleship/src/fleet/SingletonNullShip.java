@@ -4,13 +4,21 @@ import java.util.ArrayList;
 
 public class SingletonNullShip extends Ship {
 
-    private static final SingletonNullShip INSTANCE = new SingletonNullShip();
+    private static SingletonNullShip INSTANCE;
 
     private SingletonNullShip() {
         super("", 0, true);
     }
 
-    public static SingletonNullShip getInstance() {return INSTANCE;}
+    public static SingletonNullShip getInstance()
+    {
+        if (INSTANCE == null)
+        {
+            INSTANCE = new SingletonNullShip();
+        }
+        return INSTANCE;
+    }
+
     @Override
     public int getSize(){return 0;}
 

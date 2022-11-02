@@ -65,47 +65,19 @@ public class Board {
             // Is this ok?
         };
     }
-    private final String titleFinalNPCGrid = "=====  NPC  GRID  =====";
-    private final String titleOceanGrid = "===== OCEAN  GRID =====";
-    private final String titleTargetGrid = "===== TARGET GRID =====";
-    private final String letterCoordinates = "  A B C D E F G H I J";
-    private final String delimiter2 = "=======================";
-    private final String delimiter3 = "\n-----------------------\n";
-    private final String delimiter1 = " +-+-+-+-+-+-+-+-+-+-+";
 
     public void printOceanGrid(){
         String[][] oceanGrid = user.getOceanGridStrings();
-        printGrid(oceanGrid, new String(), titleOceanGrid);
+        GridUtils.printGrid(oceanGrid, new String(), GridUtils.TITLE_OCEAN_GRID);
     }
 
     public void printTargetGrid(){
         String[][] targetGrid = npc.getTargetGridStrings();
-        printGrid(targetGrid, delimiter3, titleTargetGrid);
+        GridUtils.printGrid(targetGrid, GridUtils.DELIMITER_3, GridUtils.TITLE_TARGET_GRID);
     }
 
     private void printFinalGrid(){
         String[][] targetGrid = npc.getFinalGridStrings();
-        printGrid(targetGrid, delimiter2, titleFinalNPCGrid);
-    }
-
-    private void printGrid(String[][] board, String delimiter, String title)
-    {
-        System.out.println(title);
-        System.out.println(letterCoordinates);
-        System.out.println(delimiter1);
-        for (Integer i=0; i<board.length; i++)
-        {
-            String line = i.toString();
-            for (Integer j = 0; j<board[i].length; j++)
-            {
-                line += "|" + board[i][j];
-            }
-            line += "|" + i.toString();
-            System.out.println(line);
-        }
-        System.out.println(delimiter1);
-        System.out.println(letterCoordinates);
-        System.out.println(delimiter2);
-        System.out.println(delimiter);
+        GridUtils.printGrid(targetGrid, GridUtils.DELIMITER_2, GridUtils.TITLE_FINAL_NPC_GRID);
     }
 }

@@ -13,25 +13,29 @@ public class User extends Player
     public User()
     {
         super();
-        System.out.println("define your fleet by the following rules");
-        System.out.println("- type the coordinates seperated by commas");
-        System.out.println("- all coordinates need form a line (vertical or horizontal)");
-        System.out.println("- type as many coordinates as asked by the system\n");
         setFleet();
     }
 
     @Override
     public void setFleet()
     {
+        printOceanGrid();
         configureShip(ShipFactory.getShip("Carrier"));
-        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip("Battleship"));}
-        for (int i=0; i<3; i++){configureShip(ShipFactory.getShip("Submarine"));}
-        for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
-
-        /*configureShip(ShipFactory.getShip("Carrier"), "A0,F0");
-        configureShip(ShipFactory.getShip("Submarine"), "A2,C2");
-        configureShip(ShipFactory.getShip("Patrol Boat"), "A1,B1");
-        configureShip(ShipFactory.getShip("Battleship"), new String());*/
+        for (int i=0; i<2; i++)
+        {
+            printOceanGrid();
+            configureShip(ShipFactory.getShip("Battleship"));
+        }
+        for (int i=0; i<3; i++)
+        {
+            printOceanGrid();
+            configureShip(ShipFactory.getShip("Submarine"));
+        }
+        for (int i=0; i<4; i++)
+        {
+            printOceanGrid();
+            configureShip(ShipFactory.getShip("Patrol Boat"));
+        }
     }
 
     @Override
@@ -60,17 +64,7 @@ public class User extends Player
             ArrayList<String> coordinates = new ArrayList<String>();
             ArrayList<int[]> xyCoordinates = new ArrayList<int[]>();
 
-            /*if (debug.isEmpty())
-            {
-                line = scanner.nextLine();
-            }
-            else {
-                line = debug;
-            }
-            */
-
             line = scanner.nextLine();
-
             if (line != null && !line.isEmpty())
             {
                 line = line.replaceAll("\\s+","");
@@ -117,5 +111,10 @@ public class User extends Player
             }
             System.out.println("Please try again");
         }
+    }
+
+    public void printOceanGrid(){
+        String[][] oceanGrid = aGrid.getOceanGridStrings();
+        GridUtils.printGrid(oceanGrid, new String(), GridUtils.TITLE_OCEAN_GRID);
     }
 }

@@ -109,6 +109,25 @@ public class Grid {
         return true;
     }
 
+    private boolean coordinatesFormLine(ArrayList<String> coordinates){
+        String row =  String.valueOf(coordinates.get(0).charAt(0));
+        String column = String.valueOf(coordinates.get(0).charAt(1));
+        boolean allInLine = true;
+        boolean allInRow = true;
+        for (String coor : coordinates)
+        {
+            if (!coor.startsWith(row))
+            {
+                allInLine = false;
+            }
+            if (!coor.startsWith(column))
+            {
+                allInRow = false;
+            }
+        }
+        return allInLine || allInRow;
+    }
+
     private boolean coordinatesAreFree(ArrayList<int[]> coordinates){
         for (int[] coor : coordinates)
         {

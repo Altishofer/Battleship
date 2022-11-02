@@ -19,6 +19,6 @@ public abstract class Player
     public String[][] getOceanGridStrings(){return aGrid.getOceanGridStrings();}
     public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
     public String[][] getFinalGridStrings(){return aGrid.getFinalGridStrings();}
+    protected abstract void configureShip(fleet.Ship ship);
 
-    //protected abstract void configureShip(fleet.Ship ship);
 }
