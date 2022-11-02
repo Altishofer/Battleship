@@ -83,36 +83,6 @@ public abstract class GridUtils {
         return false;
     }
 
-    //TODO: remove if not needed
-        /*
-        int startRow = xyCoordinates.get(0)[0];
-        int startCol = xyCoordinates.get(0)[1];
-
-        boolean consecutiveRow = true;
-        boolean consecutiveCol = true;
-
-        int index = 0;
-
-        for (int[] coor : xyCoordinates){
-            if (coor[0] - index != startRow) {
-                consecutiveRow = false;
-                if (coor[0] != startRow){
-                    return false;
-                }
-            }
-            if (coor[1] - index != startCol) {
-                consecutiveCol = false;
-                if (coor[1] != startCol){
-                    return false;
-                }
-            }
-
-            index += 1;
-        }
-
-        return (consecutiveCol ^ consecutiveRow);
-    }*/
-
     public static void getConsecutiveCoordinates(ArrayList<int[]> xyCoordinates) {
         int[] startPoint = xyCoordinates.get(0);
         int[] endPoint = xyCoordinates.get(1);

@@ -18,7 +18,7 @@ public abstract class Player
     public void setHit(int[] shot){aGrid.setHit(shot);}
     public String[][] getOceanGridStrings(){return aGrid.getOceanGridStrings();}
     public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
-    public String[][] getFinalGridStrings(){return aGrid.getFinalGridStrings();}
+    //public String[][] getFinalGridStrings(){return aGrid.getFinalGridStrings();}
     protected abstract void configureShip(fleet.Ship ship);
 
 }

@@ -18,7 +18,6 @@ public class Npc extends Player
     @Override
     public int[] nextMove()
     {
-        final String upper = "ABCDEFGHIJ";
         Random ran = new Random();
         while (true)
         {
