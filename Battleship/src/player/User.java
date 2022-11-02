@@ -21,7 +21,6 @@ public class User extends Player
     {
         printOceanGrid();
         configureShip(ShipFactory.getShip("Carrier"));
-
         for (int i=0; i<2; i++)
         {
             printOceanGrid();
@@ -37,14 +36,6 @@ public class User extends Player
             printOceanGrid();
             configureShip(ShipFactory.getShip("Patrol Boat"));
         }
-
-
-        /*
-        configureShip(ShipFactory.getShip("Carrier"), "A0,B0,C0,D0,E0,F0");
-        configureShip(ShipFactory.getShip("Battleship"), "A1,B1,C1,D1");
-        configureShip(ShipFactory.getShip("Submarine"), "A2,B2,C2");
-        configureShip(ShipFactory.getShip("Patrol Boat"), new String());
-        */
     }
 
     @Override
