@@ -7,7 +7,7 @@ public class SingletonNullShip extends Ship {
     private static SingletonNullShip INSTANCE;
 
     private SingletonNullShip() {
-        super("", 0, true);
+        super(ShipType.NULL, true);
     }
 
     public static SingletonNullShip getInstance()
@@ -21,9 +21,6 @@ public class SingletonNullShip extends Ship {
 
     @Override
     public int getSize(){return 0;}
-
-    @Override
-    public  String toString() {return "Null";}
 
     @Override
     public  void setHit() {}

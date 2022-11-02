@@ -2,6 +2,7 @@ package player;
 
 import fleet.ShipFactory;
 import fleet.Ship;
+import fleet.ShipType;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -10,14 +11,12 @@ public class Npc extends Player
 {
     public Npc()
     {
-        super();
         setFleet();
     }
 
     @Override
     public int[] nextMove()
     {
-        final String upper = "ABCDEFGHIJ";
         Random ran = new Random();
         while (true)
         {
@@ -30,10 +29,10 @@ public class Npc extends Player
     @Override
     public void setFleet()
     {
-        configureShip(ShipFactory.getShip("Carrier"));
-        for (int i=0; i<2; i++){configureShip(ShipFactory.getShip("Battleship"));}
-        for (int i=0; i<3; i++){configureShip(ShipFactory.getShip("Submarine"));}
-        for (int i=0; i<4; i++){configureShip(ShipFactory.getShip("Patrol Boat"));}
+        for (int i=0; i<ShipType.CARRIER.quantity; i++){ configureShip(ShipFactory.getShip(ShipType.CARRIER));}
+        for (int i=0; i<ShipType.BATTLESHIP.quantity; i++){configureShip(ShipFactory.getShip(ShipType.BATTLESHIP));}
+        for (int i=0; i<ShipType.SUBMARINE.quantity; i++){configureShip(ShipFactory.getShip(ShipType.SUBMARINE));}
+        for (int i=0; i<ShipType.PATROLBOAT.quantity; i++){configureShip(ShipFactory.getShip(ShipType.PATROLBOAT));}
     }
 
     protected void configureShip(Ship pShip) {
@@ -70,11 +69,12 @@ public class Npc extends Player
         Random rand = new Random();
         boolean direction = rand.nextBoolean();
 
-        if(direction) {
+        if(direction)
+        {
             int xCoor = rand.nextInt(10);
-            int yCoor = rand.nextInt(10 - (shipSize-1));
-            int[] startPoint = new int[] {xCoor, yCoor};
-            int[] endPoint = new int[] {xCoor, yCoor + shipSize-1};
+            int yCoor = rand.nextInt(10 - (shipSize - 1));
+            int[] startPoint = new int[]{xCoor, yCoor};
+            int[] endPoint = new int[]{xCoor, yCoor + shipSize - 1};
             ArrayList<int[]> placement = new ArrayList<int[]>();
             placement.add(startPoint);
             placement.add(endPoint);

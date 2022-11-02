@@ -1,27 +1,27 @@
 package fleet;
 
-public abstract class ShipFactory
+public class ShipFactory
 {
-    public static Ship getShip(String pType)
+    public static Ship getShip(ShipType pType)
     {
         if (pType == null){return null;}
-        if (pType.equalsIgnoreCase("Battleship"))
+        if (pType.equals(ShipType.BATTLESHIP))
         {
-            return new Ship("Battleship", 4, false);
+            return new Ship(ShipType.BATTLESHIP);
         }
-        if (pType.equalsIgnoreCase("Carrier"))
+        if (pType.equals(ShipType.CARRIER))
         {
-            return new Ship("Carrier", 6, false);
+            return new Ship(ShipType.CARRIER);
         }
-        if (pType.equalsIgnoreCase("Patrol Boat"))
+        if (pType.equals(ShipType.PATROLBOAT))
         {
-            return new Ship("Patrol Boat", 2, false);
+            return new Ship(ShipType.PATROLBOAT);
         }
-        if (pType.equalsIgnoreCase("Submarine"))
+        if (pType.equals(ShipType.SUBMARINE))
         {
-            return new Ship("Submarine", 3, false);
+            return new Ship(ShipType.SUBMARINE);
         }
-        if (pType.equalsIgnoreCase("Null"))
+        if (pType.equals(ShipType.NULL))
         {
             return SingletonNullShip.getInstance();
         }

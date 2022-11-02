@@ -31,18 +31,6 @@ public class Grid {
         return copyGrid;
     }
 
-    public String[][] getFinalGridStrings(){
-        String[][] copyGrid = new String[10][10];
-        for (int i = 0; i < aBlocks.length; i++)
-        {
-            for (int j = 0; j < aBlocks[i].length; j++)
-            {
-                copyGrid[i][j] = aBlocks[i][j].toStringFinal();
-            }
-        }
-        return copyGrid;
-    }
-
     public String[][] getTargetGridStrings(){
         String[][] copyGrid = new String[10][10];
 
@@ -91,50 +79,6 @@ public class Grid {
         for (int[] coor : coordinates)
         {
             if (!isFree(coor)){return false;}
-        }
-        return true;
-    }
-
-    //TODO: Check if function is needed
-    private boolean allInputCorrect(ArrayList<String> coordinates)
-    {
-        ArrayList<int[]> xyCoordinates = new ArrayList<int[]>();
-        for (String coor : coordinates)
-        {
-            if (!GridUtils.coordinatesAreValid(coor)){return false;}
-        }
-        xyCoordinates = ui.GridUtils.convertCoordinates(coordinates);
-        if (!coordinatesAreFree(xyCoordinates)){return false;}
-        if (!GridUtils.coordinatesInLine(xyCoordinates)) {return false;}
-        return true;
-    }
-
-    private boolean coordinatesFormLine(ArrayList<String> coordinates){
-        String row =  String.valueOf(coordinates.get(0).charAt(0));
-        String column = String.valueOf(coordinates.get(0).charAt(1));
-        boolean allInLine = true;
-        boolean allInRow = true;
-        for (String coor : coordinates)
-        {
-            if (!coor.startsWith(row))
-            {
-                allInLine = false;
-            }
-            if (!coor.startsWith(column))
-            {
-                allInRow = false;
-            }
-        }
-        return allInLine || allInRow;
-    }
-
-    private boolean coordinatesAreFree(ArrayList<int[]> coordinates){
-        for (int[] coor : coordinates)
-        {
-            if (this.isFree(coor))
-            {
-                return false;
-            }
         }
         return true;
     }

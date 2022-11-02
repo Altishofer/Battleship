@@ -14,11 +14,23 @@ public abstract class Player
     {
         return aFleet.defeated();
     }
-    public boolean beenShot(int[] shot){return aGrid.beenShot(shot);}
-    public void setHit(int[] shot){aGrid.setHit(shot);}
-    public String[][] getOceanGridStrings(){return aGrid.getOceanGridStrings();}
-    public String[][] getTargetGridStrings(){return aGrid.getTargetGridStrings();}
-    public String[][] getFinalGridStrings(){return aGrid.getFinalGridStrings();}
+    public boolean beenShot(int[] shot)
+    {
+        return aGrid.beenShot(shot);
+    }
+    public void setHit(int[] shot)
+    {
+        aGrid.setHit(shot);
+    }
+    public String[][] getOceanGridStrings()
+    {
+        return aGrid.getOceanGridStrings();
+    }
+    public String[][] getTargetGridStrings()
+    {
+        return aGrid.getTargetGridStrings();
+    }
+    //public String[][] getFinalGridStrings(){return aGrid.getFinalGridStrings();}
     protected abstract void configureShip(fleet.Ship ship);
 
 }

@@ -6,8 +6,10 @@ public class Fleet
 {
     private ArrayList<Ship> aShips = new ArrayList<Ship>();
 
-    public void addShip(Ship pShip){
-        aShips.add(pShip);}
+    public void addShip(Ship pShip)
+    {
+        aShips.add(pShip);
+    }
 
     public boolean defeated(){
         for (Ship ship : aShips)
