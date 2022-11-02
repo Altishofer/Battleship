@@ -99,11 +99,11 @@ public class Grid {
     private boolean allInputCorrect(ArrayList<String> coordinates)
     {
         ArrayList<int[]> xyCoordinates = new ArrayList<int[]>();
-        xyCoordinates = ui.GridUtils.convertCoordinates(coordinates);
-        for (int[] coor : xyCoordinates)
+        for (String coor : coordinates)
         {
-            if (!GridUtils.coordinatesAreValidInt(coor)){return false;}
+            if (!GridUtils.coordinatesAreValid(coor)){return false;}
         }
+        xyCoordinates = ui.GridUtils.convertCoordinates(coordinates);
         if (!coordinatesAreFree(xyCoordinates)){return false;}
         if (!GridUtils.coordinatesInLine(xyCoordinates)) {return false;}
         return true;

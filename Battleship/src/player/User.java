@@ -42,7 +42,7 @@ public class User extends Player
         while (true)
         {
             String coordinate = scanner.nextLine();
-            if (ui.GridUtils.coordinatesAreValidString(coordinate)){
+            if (ui.GridUtils.coordinatesAreValid(coordinate)){
                 int[] xyCoordinate = GridUtils.convertCoordinates(coordinate);
                 return xyCoordinate;
             }
@@ -81,7 +81,7 @@ public class User extends Player
                 System.out.println("Given coordinates are empty!");
                 allGood = false;
             }
-            if (allGood && !ui.GridUtils.coordinatesAreValidString(coordinates))
+            if (allGood && !ui.GridUtils.coordinatesAreValid(coordinates))
             {
                 System.out.println("Coordinates are not valid!");
                 allGood = false;

@@ -13,24 +13,15 @@ public abstract class GridUtils {
     }
 
     //TODO: check if that many "coordinatesAreValidType" methods are necessary
-    public static  boolean coordinatesAreValidString(ArrayList<String> coordinates)
+    public static  boolean coordinatesAreValid(ArrayList<String> coordinates)
     {
         for (String coor : coordinates) {
-            if (!coordinatesAreValidString(coor)) { return false;}
+            if (!coordinatesAreValid(coor)) { return false;}
         }
         return true;
     }
 
-    public static boolean coordinatesAreValidInt(ArrayList<int[]> coordinates) {
-        for (int[] coor : coordinates) {
-            if (!coordinatesAreValidInt(coor)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static boolean coordinatesAreValidString(String coordinate)
+    public static boolean coordinatesAreValid(String coordinate)
     {
         if (
                 coordinate.length() != 2 ||
@@ -39,19 +30,6 @@ public abstract class GridUtils {
         ){return false;}
         int[] convCoor = convertCoordinates(coordinate);
         if (convCoor[0] > 9 || convCoor[1] > 9){return false;}
-        return true;
-    }
-
-    public static boolean coordinatesAreValidInt(int[] coordinate) {
-        if (coordinate.length != 2) {
-            return false;
-        }
-        if (coordinate[0] > 9 || coordinate[1] > 9) {
-            return false;
-        }
-        if (coordinate[0] < 0 || coordinate[1] < 0) {
-            return false;
-        }
         return true;
     }
 
