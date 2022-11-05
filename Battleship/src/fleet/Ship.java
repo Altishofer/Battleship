@@ -7,7 +7,6 @@ public class Ship
     protected ArrayList<int[]> aCoordinates = new ArrayList<int[]>();
     protected final ShipType aType;
     protected int aSize;
-    private boolean isNull;
     public Ship(ShipType pType)
     {
         aType = pType;
