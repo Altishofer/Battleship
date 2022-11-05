@@ -57,7 +57,7 @@ public class User extends Player
     protected void configureShip(Ship pShip)
     {
         Scanner scanner = new Scanner(System.in);
-        System.out.print(String.format("Set up %s with length %s by entering valid start and end coordinates of your ship: ", pShip.toString(), pShip.getSize()));
+        System.out.print(String.format("Set up %s with length %s by entering valid start and end coordinates of your ship (comma-separated): ", pShip.toString(), pShip.getSize()));
         while (true){
             String line;
             Boolean allGood = true;

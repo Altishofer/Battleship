@@ -30,7 +30,6 @@ public abstract class Player
     {
         return aGrid.getTargetGridStrings();
     }
-    //public String[][] getFinalGridStrings(){return aGrid.getFinalGridStrings();}
     protected abstract void configureShip(fleet.Ship ship);
 
 }

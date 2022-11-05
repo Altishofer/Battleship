@@ -12,7 +12,6 @@ public abstract class GridUtils {
         }
     }
 
-    //TODO: check if that many "coordinatesAreValidType" methods are necessary
     public static  boolean coordinatesAreValid(ArrayList<String> coordinates)
     {
         for (String coor : coordinates) {
