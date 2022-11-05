@@ -54,6 +54,7 @@ public abstract class GridUtils {
     }
 
     public static boolean coordinatesInLine(ArrayList<int[]> xyCoordinates) {
+        if (xyCoordinates.size() != 2){return false;}
         int[] startPoint = xyCoordinates.get(0);
         int[] endPoint = xyCoordinates.get(1);
 
